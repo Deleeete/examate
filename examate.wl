@@ -31,7 +31,7 @@ IsOddFunction::usage="IsOddFunction[\:51fd\:6570] \n\:5224\:65ad\:4e00\:5143\:51
 IsEvenFunction::usage="IsEvenFunction[\:51fd\:6570] \n\:5224\:65ad\:4e00\:5143\:51fd\:6570\:662f\:5426\:4e3a\:5076\:51fd\:6570";
 FourierCoeA::usage="FourierCoeA[\:51fd\:6570f,{\:81ea\:53d8\:91cfx,\:533a\:95f4\:4e0b\:9650xmin,\:533a\:95f4\:4e0a\:9650xmax}] \n\:8ba1\:7b97\:51fd\:6570f\:5728\:533a\:95f4[xmin,xmax]\:7684\:5085\:91cc\:53f6\:6b63\:5f26\:7cfb\:6570\:3002\:7ed3\:679c\:4e3a\:7b2cn\:9879\:7684\:7cfb\:6570\:3002";
 FourierCoeB::usage="FourierCoeB[\:51fd\:6570f,{\:81ea\:53d8\:91cfx,\:533a\:95f4\:4e0b\:9650xmin,\:533a\:95f4\:4e0a\:9650xmax}] \n\:8ba1\:7b97\:51fd\:6570f\:5728\:533a\:95f4[xmin,xmax]\:7684\:5085\:91cc\:53f6\:4f59\:5f26\:7cfb\:6570\:3002\:7ed3\:679c\:4e3a\:7b2cn\:9879\:7684\:7cfb\:6570\:3002";
-VecPlot::usage="VecPlot[\:5411\:91cf\:573af] \n\:6253\:5370\:5411\:91cf\:573af\:7684\:5411\:91cf\:56fe\:3002x/y\:7684\:8303\:56f4\:5747\:4e3a-10~10";
+VecPlot::usage="VecPlot[\:5411\:91cf\:573af,\:81ea\:53d8\:91cfx,\:81ea\:53d8\:91cfy] \n\:6253\:5370\:5411\:91cf\:573af\:7684\:5411\:91cf\:56fe\:3002x/y\:7684\:8303\:56f4\:5747\:4e3a-10~10";
 
 
 Begin["`Private`"];
@@ -179,7 +179,7 @@ FourierCoeB[f_,{x_,xmin_,xmax_}]:=Module[{L,i},
 	Simplify[i,{n\[Element]Integers,n>=0}]
 ];
 
-VecPlot[f_]:=VectorPlot[f,{x,-10,10},{y,-10,10},VectorScaling->"Linear",VectorStyle->Black,VectorColorFunction->None];
+VecPlot[f_,x_,y_]:=VectorPlot[f,{x,-10,10},{y,-10,10},VectorScaling->"Linear",VectorStyle->Black,VectorColorFunction->None];
 
 
 End[];
