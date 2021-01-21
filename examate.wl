@@ -32,12 +32,13 @@ IsEvenFunction::usage="IsEvenFunction[\:51fd\:6570] \n\:5224\:65ad\:4e00\:5143\:
 FourierCoeA::usage="FourierCoeA[\:51fd\:6570f,{\:81ea\:53d8\:91cfx,\:533a\:95f4\:4e0b\:9650xmin,\:533a\:95f4\:4e0a\:9650xmax}] \n\:8ba1\:7b97\:51fd\:6570f\:5728\:533a\:95f4[xmin,xmax]\:7684\:5085\:91cc\:53f6\:6b63\:5f26\:7cfb\:6570\:3002\:7ed3\:679c\:4e3a\:7b2cn\:9879\:7684\:7cfb\:6570\:3002";
 FourierCoeB::usage="FourierCoeB[\:51fd\:6570f,{\:81ea\:53d8\:91cfx,\:533a\:95f4\:4e0b\:9650xmin,\:533a\:95f4\:4e0a\:9650xmax}] \n\:8ba1\:7b97\:51fd\:6570f\:5728\:533a\:95f4[xmin,xmax]\:7684\:5085\:91cc\:53f6\:4f59\:5f26\:7cfb\:6570\:3002\:7ed3\:679c\:4e3a\:7b2cn\:9879\:7684\:7cfb\:6570\:3002";
 VecPlot::usage="VecPlot[\:5411\:91cf\:573af,\:81ea\:53d8\:91cfx,\:81ea\:53d8\:91cfy] \n\:6253\:5370\:5411\:91cf\:573af\:7684\:5411\:91cf\:56fe\:3002x/y\:7684\:8303\:56f4\:5747\:4e3a-10~10";
+FieldPlot::usage="FieldPlot[\:5411\:91cf\:573af,f\:7684\:52bf\:573a\[Phi],\:81ea\:53d8\:91cfx,\:81ea\:53d8\:91cfy] \n\:6253\:5370\:5411\:91cf\:573af\:7684\:56fe\:793a\:ff0c\:5305\:62ec\:573a\:7684\:5411\:91cf\:56fe\:548c\:7b49\:52bf\:7ebf\:3002x/y\:7684\:8303\:56f4\:5747\:4e3a-10~10";
 
 
 Begin["`Private`"];
 
 
-Str[exp_]:=ToString@TraditionalForm@exp;
+Str[exp_]:=ToString@TraditionalForm@ExpandAll@exp;
 
 EchoSimplify[str_,exp_]:=Module[{},
 	Echo[str<>Str[exp]];
@@ -137,7 +138,7 @@ LineIntegrate[v_,{x_,y_,z_},c_,{a_,amax_,amin_}]:=Module[{dca,vp,dot,i},
 	dot
 ];
 
-ParticularSolve[coe_,rhs_,guess_,const_,t_,constrain_]:=Module[{dguess,dguess2,lhs,equa,equb,equc,rnd,s},
+ParticularSolve[coe_,rhs_,guess_,const_,t_]:=Module[{dguess,dguess2,lhs,equa,equb,equc,rnd,s},
 	dguess=Table[Simplify@D[guess,{t,Length@coe-1-i}],{i,0,Length@coe-1}];
 	Echo["\:731c\:89e3\:7684\:5404\:9636\:5bfc\:6570\:ff08\:964d\:5e8f\:ff09\:4e3a\:ff1a"<>Str@dguess];
 	lhs=Simplify[coe.dguess];
@@ -146,7 +147,7 @@ ParticularSolve[coe_,rhs_,guess_,const_,t_,constrain_]:=Module[{dguess,dguess2,l
 	equa=(lhs/.{t->rnd})==(rhs/.{t->rnd});
 	rnd=RandomInteger[]+RandomInteger[];
 	equb=(lhs/.{t->rnd})==(rhs/.{t->rnd});
-	s=Simplify@Solve[Join[{equa,equb},constrain],const];
+	s=Simplify@Solve[{equa,equb},const];
 	Print["\:5f85\:5b9a\:7cfb\:6570\:89e3\:5f97\:ff1a"<>Str@s];
 ];
 
@@ -180,6 +181,8 @@ FourierCoeB[f_,{x_,xmin_,xmax_}]:=Module[{L,i},
 ];
 
 VecPlot[f_,x_,y_]:=VectorPlot[f,{x,-10,10},{y,-10,10},VectorScaling->"Linear",VectorStyle->Black,VectorColorFunction->None];
+
+FieldPlot[f_,\[Phi]_,x_,y_]:=Show[ContourPlot[\[Phi],{x,-10,10},{y,-10,10}],VecPlot[f,x,y]];
 
 
 End[];
