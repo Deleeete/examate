@@ -33,6 +33,11 @@ FourierCoeA::usage="FourierCoeA[\:51fd\:6570f,{\:81ea\:53d8\:91cfx,\:533a\:95f4\
 FourierCoeB::usage="FourierCoeB[\:51fd\:6570f,{\:81ea\:53d8\:91cfx,\:533a\:95f4\:4e0b\:9650xmin,\:533a\:95f4\:4e0a\:9650xmax}] \n\:8ba1\:7b97\:51fd\:6570f\:5728\:533a\:95f4[xmin,xmax]\:7684\:5085\:91cc\:53f6\:4f59\:5f26\:7cfb\:6570\:3002\:7ed3\:679c\:4e3a\:7b2cn\:9879\:7684\:7cfb\:6570\:3002";
 VecPlot::usage="VecPlot[\:5411\:91cf\:573af,\:81ea\:53d8\:91cfx,\:81ea\:53d8\:91cfy] \n\:6253\:5370\:5411\:91cf\:573af\:7684\:5411\:91cf\:56fe\:3002x/y\:7684\:8303\:56f4\:5747\:4e3a-10~10";
 FieldPlot::usage="FieldPlot[\:5411\:91cf\:573af,f\:7684\:52bf\:573a\[Phi],\:81ea\:53d8\:91cfx,\:81ea\:53d8\:91cfy] \n\:6253\:5370\:5411\:91cf\:573af\:7684\:56fe\:793a\:ff0c\:5305\:62ec\:573a\:7684\:5411\:91cf\:56fe\:548c\:7b49\:52bf\:7ebf\:3002x/y\:7684\:8303\:56f4\:5747\:4e3a-10~10";
+QP::usage="QP[\:6ce2\:51fd\:6570,\:65f6\:95f4,{\:4f4d\:7f6e\:81ea\:53d8\:91cf,\:4f4d\:7f6e\:6700\:5c0f\:503c,\:4f4d\:7f6e\:6700\:5927\:503c}] \n\:5df2\:77e5\:6ce2\:51fd\:6570\:7684\:8868\:8fbe\:5f0f\:ff0c\:6c42\:5728\:7279\:5b9a\:65f6\:95f4\:7279\:5b9a\:4f4d\:7f6e\:533a\:95f4\:5185\:53d1\:73b0\:7c92\:5b50\:7684\:6982\:7387";
+SimplifyConjugate::usage="SimplifyConjugate[\:8868\:8fbe\:5f0f,\:8868\:8fbe\:5f0f\:4e2d\:662f\:5b9e\:6570\:7684\:7b26\:53f7\:7684\:96c6\:5408] \n\:5df2\:77e5\:4e00\:4e2a\:590d\:8868\:8fbe\:5f0f\:ff0c\:6c42\:5176\:5171\:8f6d\:7684\:8868\:8fbe\:5f0f\:3002\:7b2c\:4e8c\:4e2a\:53c2\:6570\:4e3a\:8be5\:8868\:8fbe\:5f0f\:4e2d\:5b9e\:6570\:53c2\:6570\:7684\:96c6\:5408\:3002";
+SimplifyNormSquare::usage="SimplifyNorm[\:51fd\:6570\:540d,\:8868\:8fbe\:5f0f\:4e2d\:662f\:5b9e\:6570\:7684\:7b26\:53f7\:7684\:96c6\:5408] \n\:5df2\:77e5\:4e00\:4e2a\:590d\:8868\:8fbe\:5f0f\:ff0c\:6c42\:5176\:6a21\:5e73\:65b9\:7684\:8868\:8fbe\:5f0f\:3002\:7b2c\:4e8c\:4e2a\:53c2\:6570\:4e3a\:8be5\:8868\:8fbe\:5f0f\:4e2d\:5b9e\:6570\:53c2\:6570\:7684\:96c6\:5408\:3002";
+ListD::usage="ListD[\:51fd\:6570\:540d,\:51fd\:6570\:8868\:8fbe\:5f0f\:7684,\:81ea\:53d8\:91cf1,\:81ea\:53d8\:91cf2] \n\:5206\:522b\:5217\:51fa\:51fd\:6570\:5bf9\:4e24\:4e2a\:81ea\:53d8\:91cf\:7684\:4e00\:9636\:548c\:4e8c\:9636\:504f\:5bfc\:6570\:ff0c\:5e76\:8fd4\:56de\:4e00\:4e2a\:5bfc\:6570\:8868\:8fbe\:5f0f\:66ff\:6362\:89c4\:5219\:3002";
+
 
 
 Begin["`Private`"];
@@ -183,6 +188,33 @@ FourierCoeB[f_,{x_,xmin_,xmax_}]:=Module[{L,i},
 VecPlot[f_,x_,y_]:=VectorPlot[f,{x,-10,10},{y,-10,10},VectorScaling->"Linear",VectorStyle->Black,VectorColorFunction->None];
 
 FieldPlot[f_,\[Phi]_,x_,y_]:=Show[ContourPlot[\[Phi],{x,-10,10},{y,-10,10}],VecPlot[f,x,y]];
+
+QP[\[Psi]_,t_,{x_,xmin_,xmax_}]:=Integrate[Norm[\[Psi]]^2,{x,xmin,xmax}];
+
+SimplifyConjugate[f_,reals_]:=Module[{assums},
+assums=Table[Element[reals[[i]],Reals],{i,1,reals//Length}];
+Simplify[Conjugate@f,Assumptions->assums]//TraditionalForm
+]
+
+SimplifyNormSquare[f_,reals_]:=Simplify[f*SimplifyConjugate[f,reals]]//TraditionalForm;
+
+ListD[fname_,f_,x_,t_]:=Module[{dx1,dx2,dt1,dt2,dxs,dts},
+dx1=D[f,x];
+dx2=D[f,{x,2}];
+dt1=D[f,t];
+dt2=D[f,{t,2}];
+Echo["\:5bf9x\:7684\:4e00\:9636\:5bfc\:6570\:4e3a"<>Str@dx1];
+Echo["\:5bf9x\:7684\:4e8c\:9636\:5bfc\:6570\:4e3a"<>Str@dx2];
+Echo["\:5bf9t\:7684\:4e00\:9636\:5bfc\:6570\:4e3a"<>Str@dt1];
+Echo["\:5bf9t\:7684\:4e8c\:9636\:5bfc\:6570\:4e3a"<>Str@dt2];
+dxs=List[Rule[\!\(
+\*SubscriptBox[\(\[PartialD]\), \(x\)]fname\),dx1],Rule[\!\(
+\*SubscriptBox[\(\[PartialD]\), \(x, x\)]fname\),dx2]];
+dts=List[Rule[\!\(
+\*SubscriptBox[\(\[PartialD]\), \(t\)]fname\),dt1],Rule[\!\(
+\*SubscriptBox[\(\[PartialD]\), \(t, t\)]fname\),dt2]];
+List[dxs,dts]
+]
 
 
 End[];
