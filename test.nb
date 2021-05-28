@@ -1,0 +1,2481 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    125506,       2473]
+NotebookOptionsPosition[    123498,       2431]
+NotebookOutlinePosition[    124033,       2451]
+CellTagsIndexPosition[    123990,       2448]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"PDF\:81ea\:53d8\:91cf\:8f6c\:6362", "[", 
+    RowBox[{"x_", ",", "fx_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "x1", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"x1", "=", 
+       RowBox[{"x", "/.", 
+        RowBox[{"Solve", "[", 
+         RowBox[{
+          RowBox[{"y", "\[Equal]", "fx"}], ",", "x"}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"D", "[", 
+       RowBox[{"x1", ",", "y"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PDF\:5747\:503c", "[", 
+    RowBox[{"pdf_", ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "xmin_", ",", "xmax_"}], "}"}]}], "]"}], ":=", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{"x", "*", "pdf"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PDFVarience", "[", 
+    RowBox[{"pdf_", ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "xmin_", ",", "xmax_"}], "}"}]}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "e", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"e", "=", 
+       RowBox[{"PDF\:5747\:503c", "[", 
+        RowBox[{"pdf", ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Integrate", "[", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"x", "-", "e"}], ")"}], "2"], "pdf"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PDF\:6807\:51c6\:5dee", "[", 
+    RowBox[{"pdf_", ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "xmin_", ",", "xmax_"}], "}"}]}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["x", "2"], " ", "pdf"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}]}], "]"}], "-", 
+    RowBox[{"PDF\:5747\:503c", "[", 
+     RowBox[{"pdf", ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"\:5747\:5300\:6982\:7387", "[", "set_", "]"}], ":=", 
+    FractionBox["1", 
+     RowBox[{"set", "//", "Length"}]]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:5747\:5300\:671f\:671b", "[", "set_", "]"}], ":=", 
+   FractionBox[
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{"set", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"set", "//", "Length"}]}], "}"}]}], "]"}], 
+    RowBox[{"set", "//", "Length"}]]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:5747\:5300\:65b9\:5dee", "[", "set_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"\:5747\:5300\:671f\:671b", "[", 
+     SuperscriptBox["set", "2"], "]"}], "-", 
+    SuperscriptBox[
+     RowBox[{"\:5747\:5300\:671f\:671b", "[", "set", "]"}], "2"]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"\:5747\:5300\:6807\:51c6\:5dee", "[", "set_", "]"}], ":=", 
+    RowBox[{"\[Sqrt]", 
+     RowBox[{"\:5747\:5300\:65b9\:5dee", "[", "set", "]"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:4e8c\:9879\:6982\:7387", "[", 
+    RowBox[{"r_", ",", "n_", ",", "p_"}], "]"}], ":=", 
+   RowBox[{
+    SuperscriptBox["p", "r"], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "p"}], ")"}], 
+     RowBox[{"n", "-", "r"}]], " ", 
+    RowBox[{"Binomial", "[", 
+     RowBox[{"n", ",", "r"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:4e8c\:9879\:671f\:671b", "[", 
+    RowBox[{"r_", ",", "n_", ",", "p_"}], "]"}], ":=", 
+   RowBox[{"n", " ", "p"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:4e8c\:9879\:65b9\:5dee", "[", 
+    RowBox[{"r_", ",", "n_", ",", "p_"}], "]"}], ":=", 
+   RowBox[{"n", " ", "p", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", "p"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:4e8c\:9879\:5206\:6807\:51c6\:5dee", "[", 
+    RowBox[{"r_", ",", "n_", ",", "p_"}], "]"}], ":=", 
+   RowBox[{"\[Sqrt]", 
+    RowBox[{"(", 
+     RowBox[{"n", " ", "p", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "p"}], ")"}]}], ")"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:6cca\:677e\:6982\:7387", "[", 
+    RowBox[{"r_", ",", "\[Lambda]_"}], "]"}], ":=", 
+   RowBox[{
+    SuperscriptBox["E", 
+     RowBox[{"-", "\[Lambda]"}]], " ", 
+    FractionBox[
+     SuperscriptBox["\[Lambda]", "r"], 
+     RowBox[{"r", "!"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:6cca\:677eP\:503c", "[", 
+    RowBox[{"r_", ",", "\[Lambda]_"}], "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{"\:6cca\:677e\:6982\:7387", "[", 
+      RowBox[{"i", ",", "\[Lambda]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", "r"}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:6b63\:6001\:6982\:7387\:5206\:5e03", "[", 
+    RowBox[{"x_", ",", "\[Mu]_", ",", "\[Sigma]_"}], "]"}], ":=", 
+   RowBox[{
+    FractionBox["1", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", 
+       RowBox[{"2", "\[Pi]"}], "]"}], " ", "\[Sigma]"}]], " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{"-", 
+      FractionBox[
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"x", "-", "\[Mu]"}], ")"}], "2"], 
+       RowBox[{"2", " ", 
+        SuperscriptBox["\[Sigma]", "2"]}]]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:6b63\:6001\:6982\:7387", "[", 
+    RowBox[{"\[Mu]_", ",", "\[Sigma]_", ",", "xmin_", ",", "xmax_"}], "]"}], ":=", 
+   RowBox[{"Re", "[", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"\:6b63\:6001\:6982\:7387\:5206\:5e03", "[", 
+       RowBox[{"x", ",", "\[Mu]", ",", "\[Sigma]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:6807\:51c6\:6b63\:6001\:53d8\:6362", "[", 
+    RowBox[{"x_", ",", "\[Mu]_", ",", "\[Sigma]_"}], "]"}], ":=", 
+   FractionBox[
+    RowBox[{"x", "-", "\[Mu]"}], "\[Sigma]"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:6b63\:6001P\:503c", "[", 
+    RowBox[{"expect_", ",", "actual_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Lambda]", ",", "dist"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"\[Lambda]", "=", "expect"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"dist", "=", 
+       RowBox[{"NormalDistribution", "[", 
+        RowBox[{"\[Lambda]", ",", 
+         RowBox[{"\[Sqrt]", "\[Lambda]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"N", "@", 
+       RowBox[{"Probability", "[", 
+        RowBox[{
+         RowBox[{"x", ">", "expect"}], ",", 
+         RowBox[{"x", "\[Distributed]", "dist"}]}], "]"}]}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:6761\:4ef6\:6982\:7387", "[", 
+    RowBox[{"pb_", ",", "pab_"}], "]"}], ":=", 
+   FractionBox["pab", "pb"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:8bca\:65ad\:95ee\:9898\:7684\:603b\:786e\:8bca\:7387", "[", 
+    RowBox[{"tp_", ",", "fp_"}], "]"}], ":=", 
+   FractionBox[
+    RowBox[{"tp", "+", "fp"}], "2"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "\:8bca\:65ad\:95ee\:9898\:7684\:9633\:6027\:4e2a\:4f53\:786e\:8bca\:6982\
+\:7387", "[", 
+    RowBox[{"tp_", ",", "fp_", ",", "pp_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pa", ",", "pb", ",", "pba"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"pa", "=", "pp"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"pb", "=", 
+       RowBox[{"\:8bca\:65ad\:95ee\:9898\:7684\:603b\:786e\:8bca\:7387", "[", 
+        RowBox[{"tp", ",", "fp"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"pba", "=", "fp"}], ";", "\[IndentingNewLine]", 
+      FractionBox[
+       RowBox[{"pa", "*", "pba"}], "pb"]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "\:8bca\:65ad\:95ee\:9898\:7684\:9634\:6027\:4e2a\:4f53\:786e\:8bca\:6982\
+\:7387", "[", 
+    RowBox[{"tp_", ",", "fp_", ",", "pp_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pa", ",", "pb", ",", "pba"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"pa", "=", 
+       RowBox[{"1", "-", "pp"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"pb", "=", 
+       FractionBox[
+        RowBox[{"tp", "+", "fp"}], "2"]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"pba", "=", "fp"}], ";", "\[IndentingNewLine]", 
+      FractionBox[
+       RowBox[{"pa", "*", "pba"}], "pb"]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PAorB", "[", 
+    RowBox[{"pa_", ",", "pb_"}], "]"}], ":=", 
+   RowBox[{"pa", "+", "pb", "-", 
+    RowBox[{"pa", "*", "pb"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:6761\:4ef6\:6982\:7387", "[", 
+    RowBox[{"pB_", ",", "pAandB_"}], "]"}], ":=", 
+   FractionBox["pAandB", "pB"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\:8d1d\:53f6\:65af\:6982\:7387", "[", 
+    RowBox[{"pA_", ",", "pB_", ",", "pBgivenA_"}], "]"}], ":=", 
+   FractionBox[
+    RowBox[{"pA", "*", "pBgivenA"}], "pB"]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.819524825870442*^9, 3.8195249078944397`*^9}, {
+   3.819524968059461*^9, 3.819525044394439*^9}, {3.8195250843844743`*^9, 
+   3.8195252391944413`*^9}, {3.8195254923864684`*^9, 
+   3.8195255776944404`*^9}, {3.8195967273565097`*^9, 
+   3.8195967307495337`*^9}, {3.8195973352775097`*^9, 3.819597369903511*^9}, {
+   3.819839704313046*^9, 3.819839878127471*^9}, {3.819840413090541*^9, 
+   3.8198404830655437`*^9}, {3.8198407338295217`*^9, 
+   3.8198407571045237`*^9}, {3.8198419664876184`*^9, 
+   3.8198420510486183`*^9}, {3.81984275318963*^9, 3.81984275368363*^9}, {
+   3.819852878060636*^9, 3.8198531541106434`*^9}, {3.8198540694496393`*^9, 
+   3.8198540761456437`*^9}, {3.8198543305516443`*^9, 
+   3.8198543326196113`*^9}, {3.8198543889646435`*^9, 
+   3.8198543960466433`*^9}, {3.8198544636216393`*^9, 
+   3.8198544829656105`*^9}, {3.8198545472036433`*^9, 
+   3.8198545500286407`*^9}, {3.8198546510446467`*^9, 3.819854673447639*^9}, {
+   3.8198547366846137`*^9, 3.819854749966648*^9}, 3.819864843492652*^9, {
+   3.8198712585859804`*^9, 3.819871710776022*^9}, {3.819879137466626*^9, 
+   3.819879138189644*^9}, {3.819879899515753*^9, 3.819880085128043*^9}, {
+   3.8198802090910625`*^9, 3.8198803101515846`*^9}, {3.819881253851345*^9, 
+   3.819881361459965*^9}, {3.819881432465966*^9, 3.819881434224967*^9}, {
+   3.8198815506116223`*^9, 3.8198816090796223`*^9}, {3.819951868441231*^9, 
+   3.819951869029231*^9}, {3.81995214813023*^9, 3.819952181951264*^9}, {
+   3.8199522302722297`*^9, 3.8199522339492674`*^9}, {3.8199525995989428`*^9, 
+   3.819952726729967*^9}, 3.819952797922968*^9, {3.819954221073204*^9, 
+   3.8199542475871706`*^9}, {3.819954425963191*^9, 3.8199544688351707`*^9}, {
+   3.819954499835171*^9, 3.819954627284171*^9}, {3.8199546605761704`*^9, 
+   3.819954695115198*^9}, {3.819965721514208*^9, 3.819965815988228*^9}, {
+   3.819965851003208*^9, 3.8199658772142344`*^9}, {3.8199661567092285`*^9, 
+   3.8199662056642075`*^9}, {3.81996624035323*^9, 3.8199663364832077`*^9}, {
+   3.8199663957722087`*^9, 3.8199664327512074`*^9}, {3.819967654211918*^9, 
+   3.8199676740549383`*^9}, {3.819967736578955*^9, 
+   3.8199678494899178`*^9}},ExpressionUUID->"2d26e4c9-13ab-4f8c-9ecd-\
+f4367ea13dc9"],
+
+Cell[BoxData[
+ RowBox[{"<<", " ", 
+  "\"\<D:\\\\Apps\\\\Programming\\\\Mathematica\\\\examate\\\\examate.wl\>\""}\
+]], "Input",
+ CellChangeTimes->{{3.8199705769180293`*^9, 3.8199705874400225`*^9}, {
+  3.8199707019089966`*^9, 3.8199707315240245`*^9}, {3.819970954273998*^9, 
+  3.819970971881999*^9}, {3.8199725329139967`*^9, 3.819972570808997*^9}, {
+  3.8199784792714024`*^9, 3.8199784820644584`*^9}},
+ NumberMarks->False,
+ CellLabel->
+  "In[231]:=",ExpressionUUID->"eb98b6a4-c53d-4cfd-a7cc-08fa10eafa8d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Flux"}]], "Input",
+ CellChangeTimes->{{3.823483944391988*^9, 3.823483947842984*^9}},
+ CellLabel->
+  "In[232]:=",ExpressionUUID->"9abd5c47-ffa5-4abb-b41e-a79a9a992dec"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Flux[\:5411\:91cf\:573a,{i\:65b9\:5411\:81ea\:53d8\
+\:91cf,j\:65b9\:5411\:81ea\:53d8\:91cf,z\:65b9\:5411\:81ea\:53d8\:91cf},\:66f2\
+\:9762\:53c2\:6570\:65b9\:7a0b,{\:66f2\:9762\:53c2\:65701,\:66f2\:9762\:53c2\
+\:65701\:4e0b\:9650,\:66f2\:9762\:53c2\:65701\:4e0a\:9650},{\:66f2\:9762\:53c2\
+\:65702,\:66f2\:9762\:53c2\:65702\:4e0b\:9650,\:66f2\:9762\:53c2\:65702\:4e0a\
+\:9650}] \\n\:5df2\:77e5\:5411\:91cf\:573av\:7684\:8868\:8fbe\:5f0f\:ff0c\
+\:548c\:66f2\:9762g\:7684\:53c2\:6570\:65b9\:7a0b\:4e0e\:53c2\:6570\:8303\
+\:56f4\:ff0c\:6c42v\:7a7f\:8fc7s\:7684\:901a\:91cf\:3002\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False, False, False, False, 
+                False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Definitions\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Definitions\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Definitions", "Tooltip"]& ], GridBox[{
+                    {
+                    RowBox[{
+                    RowBox[{"Flux", "[", 
+                    RowBox[{"Examate`Private`v_", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Examate`Private`x_", ",", "Examate`Private`y_", ",", 
+                    "Examate`Private`z_"}], "}"}], ",", "Examate`Private`g_", 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Examate`Private`a_", ",", "Examate`Private`amin_", ",", 
+                    "Examate`Private`amax_"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Examate`Private`b_", ",", "Examate`Private`bmin_", ",", 
+                    "Examate`Private`bmax_"}], "}"}]}], "]"}], ":=", 
+                    RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Examate`Private`dga", ",", "Examate`Private`dgb", ",", 
+                    "Examate`Private`dS", ",", "Examate`Private`vp", ",", 
+                    "Examate`Private`i1", ",", "Examate`Private`i2"}], "}"}], 
+                    ",", 
+                    RowBox[{
+                    RowBox[{"Examate`Private`dga", "=", 
+                    RowBox[{"Simplify", "[", 
+                    RowBox[{
+                    SubscriptBox["\[PartialD]", "Examate`Private`a"], 
+                    "Examate`Private`g"}], "]"}]}], ";", 
+                    RowBox[{"Examate`Private`dgb", "=", 
+                    RowBox[{"Simplify", "[", 
+                    RowBox[{
+                    SubscriptBox["\[PartialD]", "Examate`Private`b"], 
+                    "Examate`Private`g"}], "]"}]}], ";", 
+                    RowBox[{"Examate`Private`dS", "=", 
+                    RowBox[{"Simplify", "[", 
+                    RowBox[{
+                    "Examate`Private`dga", "\[Cross]", 
+                    "Examate`Private`dgb"}], "]"}]}], ";", 
+                    RowBox[{"Examate`Private`vp", "=", 
+                    RowBox[{"Simplify", "[", 
+                    RowBox[{"Examate`Private`v", "/.", "\[VeryThinSpace]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Examate`Private`x", "\[Rule]", 
+                    RowBox[{
+                    "Examate`Private`g", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}]}], ",", 
+                    RowBox[{"Examate`Private`y", "\[Rule]", 
+                    RowBox[{
+                    "Examate`Private`g", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}]}], ",", 
+                    RowBox[{"Examate`Private`z", "\[Rule]", 
+                    RowBox[{
+                    "Examate`Private`g", "\[LeftDoubleBracket]", "3", 
+                    "\[RightDoubleBracket]"}]}]}], "}"}]}], "]"}]}], ";", 
+                    RowBox[{"Examate`Private`i1", "=", 
+                    RowBox[{"Simplify", "[", 
+                    RowBox[{"Integrate", "[", 
+                    RowBox[{
+                    RowBox[{"Examate`Private`vp", ".", "Examate`Private`dS"}],
+                     ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Examate`Private`a", ",", "Examate`Private`amin", ",", 
+                    "Examate`Private`amax"}], "}"}], ",", 
+                    RowBox[{"Assumptions", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Examate`Private`amax", "\[Element]", 
+                    TemplateBox[{},
+                    "Reals"]}], ",", 
+                    RowBox[{"Examate`Private`amin", "\[Element]", 
+                    TemplateBox[{},
+                    "Reals"]}]}], "}"}]}]}], "]"}], "]"}]}], ";", 
+                    RowBox[{"Examate`Private`i2", "=", 
+                    RowBox[{"Simplify", "[", 
+                    RowBox[{"Integrate", "[", 
+                    RowBox[{"Examate`Private`i1", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Examate`Private`b", ",", "Examate`Private`bmin", ",", 
+                    "Examate`Private`bmax"}], "}"}], ",", 
+                    RowBox[{"Assumptions", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Examate`Private`bmax", "\[Element]", 
+                    TemplateBox[{},
+                    "Reals"]}], ",", 
+                    RowBox[{"Examate`Private`bmin", "\[Element]", 
+                    TemplateBox[{},
+                    "Reals"]}]}], "}"}]}]}], "]"}], "]"}]}], ";", 
+                    RowBox[{"Echo", "[", 
+                    
+                    RowBox[{"\<\"\:53c2\:65701\:7684\:504f\:5bfc\:6570\:4e3a\
+\:ff1a\"\>", "<>", 
+                    RowBox[{"Str", "[", "Examate`Private`dga", "]"}]}], "]"}],
+                     ";", 
+                    RowBox[{"Echo", "[", 
+                    
+                    RowBox[{"\<\"\:53c2\:65702\:7684\:504f\:5bfc\:6570\:4e3a\
+\:ff1a\"\>", "<>", 
+                    RowBox[{"Str", "[", "Examate`Private`dgb", "]"}]}], "]"}],
+                     ";", 
+                    RowBox[{"Echo", "[", 
+                    
+                    RowBox[{"\<\"\:9762\:79ef\:5fae\:5143\:7684\:8868\:8fbe\
+\:5f0f\:4e3a\:ff1a\"\>", "<>", 
+                    RowBox[{"Str", "[", "Examate`Private`dS", "]"}]}], "]"}], 
+                    ";", 
+                    RowBox[{"Echo", "[", 
+                    
+                    RowBox[{"\<\"\:53c2\:6570\:5316\:540e\:7684\:5411\:91cf\
+\:573a\:8868\:8fbe\:5f0f\:4e3a\:ff1a\"\>", "<>", 
+                    RowBox[{"Str", "[", "Examate`Private`vp", "]"}]}], "]"}], 
+                    ";", 
+                    RowBox[{"Echo", "[", 
+                    
+                    RowBox[{"\<\"\:5bf9\:7b2c\:4e00\:5c42\:79ef\:5206\:ff08\
+\:53c2\:65701\:ff09\:7ed3\:679c\:4e3a\:ff1a\"\>", "<>", 
+                    RowBox[{"Str", "[", "Examate`Private`i1", "]"}]}], "]"}], 
+                    ";", 
+                    RowBox[{"Echo", "[", 
+                    
+                    RowBox[{"\<\"\:5bf9\:7b2c\:4e8c\:5c42\:79ef\:5206\:ff08\
+\:53c2\:65702\:ff09\:7ed3\:679c\:4e3a\:ff1a\"\>", "<>", 
+                    RowBox[{"Str", "[", "Examate`Private`i2", "]"}]}], "]"}], 
+                    ";", "Examate`Private`i2"}]}], "]"}]}]}
+                    },
+                    DefaultBaseStyle->"Column",
+                    GridBoxAlignment->{"Columns" -> {{Left}}},
+                    
+                    GridBoxItemSize->{
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"Examate`Flux\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->6], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Flux[\:5411\:91cf\:573a,{i\:65b9\:5411\:81ea\:53d8\
+\:91cf,j\:65b9\:5411\:81ea\:53d8\:91cf,z\:65b9\:5411\:81ea\:53d8\:91cf},\:66f2\
+\:9762\:53c2\:6570\:65b9\:7a0b,{\:66f2\:9762\:53c2\:65701,\:66f2\:9762\:53c2\
+\:65701\:4e0b\:9650,\:66f2\:9762\:53c2\:65701\:4e0a\:9650},{\:66f2\:9762\:53c2\
+\:65702,\:66f2\:9762\:53c2\:65702\:4e0b\:9650,\:66f2\:9762\:53c2\:65702\:4e0a\
+\:9650}] \\n\:5df2\:77e5\:5411\:91cf\:573av\:7684\:8868\:8fbe\:5f0f\:ff0c\
+\:548c\:66f2\:9762g\:7684\:53c2\:6570\:65b9\:7a0b\:4e0e\:53c2\:6570\:8303\
+\:56f4\:ff0c\:6c42v\:7a7f\:8fc7s\:7684\:901a\:91cf\:3002\"\>", 
+             "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{14., {3., 11.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{14., {3., 11.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "Flux[\:5411\:91cf\:573a,{i\:65b9\:5411\:81ea\:53d8\:91cf,j\:65b9\:5411\
+\:81ea\:53d8\:91cf,z\:65b9\:5411\:81ea\:53d8\:91cf},\:66f2\:9762\:53c2\:6570\
+\:65b9\:7a0b,{\:66f2\:9762\:53c2\:65701,\:66f2\:9762\:53c2\:65701\:4e0b\:9650,\
+\:66f2\:9762\:53c2\:65701\:4e0a\:9650},{\:66f2\:9762\:53c2\:65702,\:66f2\:9762\
+\:53c2\:65702\:4e0b\:9650,\:66f2\:9762\:53c2\:65702\:4e0a\:9650}] \n\:5df2\
+\:77e5\:5411\:91cf\:573av\:7684\:8868\:8fbe\:5f0f\:ff0c\:548c\:66f2\:9762g\
+\:7684\:53c2\:6570\:65b9\:7a0b\:4e0e\:53c2\:6570\:8303\:56f4\:ff0c\:6c42v\
+\:7a7f\:8fc7s\:7684\:901a\:91cf\:3002", "Documentation" -> None, "OwnValues" -> 
+    None, "UpValues" -> None, "DownValues" -> 
+    Information`InformationValueForm[DownValues, Examate`Flux, {Examate`Flux[
+         Pattern[Examate`Private`v, 
+          Blank[]], {
+          Pattern[Examate`Private`x, 
+           Blank[]], 
+          Pattern[Examate`Private`y, 
+           Blank[]], 
+          Pattern[Examate`Private`z, 
+           Blank[]]}, 
+         Pattern[Examate`Private`g, 
+          Blank[]], {
+          Pattern[Examate`Private`a, 
+           Blank[]], 
+          Pattern[Examate`Private`amin, 
+           Blank[]], 
+          Pattern[Examate`Private`amax, 
+           Blank[]]}, {
+          Pattern[Examate`Private`b, 
+           Blank[]], 
+          Pattern[Examate`Private`bmin, 
+           Blank[]], 
+          Pattern[Examate`Private`bmax, 
+           Blank[]]}] :> 
+       Module[{Examate`Private`dga, Examate`Private`dgb, Examate`Private`dS, 
+          Examate`Private`vp, Examate`Private`i1, Examate`Private`i2}, 
+         Examate`Private`dga = Simplify[
+            D[Examate`Private`g, Examate`Private`a]]; 
+         Examate`Private`dgb = Simplify[
+            D[Examate`Private`g, Examate`Private`b]]; 
+         Examate`Private`dS = Simplify[
+            Cross[Examate`Private`dga, Examate`Private`dgb]]; 
+         Examate`Private`vp = Simplify[
+            ReplaceAll[
+            Examate`Private`v, {
+             Examate`Private`x -> Part[Examate`Private`g, 1], 
+              Examate`Private`y -> Part[Examate`Private`g, 2], 
+              Examate`Private`z -> Part[Examate`Private`g, 3]}]]; 
+         Examate`Private`i1 = Simplify[
+            Integrate[
+             Dot[Examate`Private`vp, Examate`Private`dS], {
+             Examate`Private`a, Examate`Private`amin, Examate`Private`amax}, 
+             Assumptions -> {
+               Element[Examate`Private`amax, Reals], 
+               Element[Examate`Private`amin, Reals]}]]; 
+         Examate`Private`i2 = Simplify[
+            Integrate[
+            Examate`Private`i1, {
+             Examate`Private`b, Examate`Private`bmin, Examate`Private`bmax}, 
+             Assumptions -> {
+               Element[Examate`Private`bmax, Reals], 
+               Element[Examate`Private`bmin, Reals]}]]; Echo[
+           StringJoin["\:53c2\:65701\:7684\:504f\:5bfc\:6570\:4e3a\:ff1a", 
+            Examate`Str[Examate`Private`dga]]]; Echo[
+           StringJoin["\:53c2\:65702\:7684\:504f\:5bfc\:6570\:4e3a\:ff1a", 
+            Examate`Str[Examate`Private`dgb]]]; Echo[
+           StringJoin[
+           "\:9762\:79ef\:5fae\:5143\:7684\:8868\:8fbe\:5f0f\:4e3a\:ff1a", 
+            Examate`Str[Examate`Private`dS]]]; Echo[
+           StringJoin[
+           "\:53c2\:6570\:5316\:540e\:7684\:5411\:91cf\:573a\:8868\:8fbe\:5f0f\
+\:4e3a\:ff1a", 
+            Examate`Str[Examate`Private`vp]]]; Echo[
+           StringJoin[
+           "\:5bf9\:7b2c\:4e00\:5c42\:79ef\:5206\:ff08\:53c2\:65701\:ff09\
+\:7ed3\:679c\:4e3a\:ff1a", 
+            Examate`Str[Examate`Private`i1]]]; Echo[
+           StringJoin[
+           "\:5bf9\:7b2c\:4e8c\:5c42\:79ef\:5206\:ff08\:53c2\:65702\:ff09\
+\:7ed3\:679c\:4e3a\:ff1a", 
+            Examate`Str[Examate`Private`i2]]]; Examate`Private`i2]}], 
+    "SubValues" -> None, "DefaultValues" -> None, "NValues" -> None, 
+    "FormatValues" -> None, "Options" -> None, "Attributes" -> {}, "FullName" -> 
+    "Examate`Flux"], False]]], "Output",
+ CellChangeTimes->{3.823483948509985*^9},
+ CellLabel->
+  "Out[232]=",ExpressionUUID->"14934d44-acb2-4313-adfd-7cd429270058"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"j", "=", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"4", "\[Pi]"}]], " ", 
+     FractionBox["1", 
+      RowBox[{
+       SuperscriptBox["x", "2"], "+", 
+       SuperscriptBox["y", "2"], "+", 
+       SuperscriptBox["z", "2"]}]], 
+     FractionBox[
+      RowBox[{"{", " ", 
+       RowBox[{"x", ",", "y", ",", "z"}], "}"}], 
+      RowBox[{"\[Sqrt]", 
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["x", "2"], "+", 
+         SuperscriptBox["y", "2"], "+", 
+         SuperscriptBox["z", "2"]}], ")"}]}]]}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"VectorPlot3D", "[", 
+    RowBox[{"j", ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "10"}], ",", "10"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "10"}], ",", "10"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", 
+       RowBox[{"-", "10"}], ",", "10"}], "}"}]}], "]"}], "*)"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.8234839536649847`*^9, 3.8234840766923428`*^9}, {
+  3.823484196297184*^9, 
+  3.8234842098761873`*^9}},ExpressionUUID->"28c8a970-a5e5-4864-8262-\
+2cfcb920467f"],
+
+Cell[BoxData[
+ Graphics3DBox[{{}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2525294501957112, 0.5224820701249826, -0.7045842357851548], 
+      Arrow3DBox[
+       TubeBox[{{-8.906577869384583, -7.713322695671328, -8.726628453742874}, \
+{-11.093422130615416`, -9.607185380017443, -10.869289488522547`}}, 
+       0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2722742008648817, 0.5224468141167281, -0.6573953581419928], 
+      Arrow3DBox[
+       TubeBox[{{-5.249348109394531, -7.576781360072463, -8.572149566840114}, \
+{-6.75065189060547, -9.743726715616308, -11.02376837542531}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28756227924015365`, 0.5224195158931938, -0.620857684309716], 
+      Arrow3DBox[
+       TubeBox[{{-1.7278655794333564`, -7.481877430570027, \
+-8.464778027460238}, {-2.2721344205666436`, -9.838630645118744, \
+-11.131139914805185`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28756227924015365`, 0.5224195158931938, -0.620857684309716], 
+      Arrow3DBox[TubeBox[{{
+       1.7278655794333564`, -7.481877430570027, -8.464778027460238}, {
+       2.2721344205666436`, -9.838630645118744, -11.131139914805185`}}, 
+       0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2722742008648817, 0.5224468141167281, -0.6573953581419928], 
+      Arrow3DBox[TubeBox[{{
+       5.249348109394531, -7.576781360072463, -8.572149566840114}, {
+       6.75065189060547, -9.743726715616308, -11.02376837542531}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2525294501957112, 0.5224820701249826, -0.7045842357851548], 
+      Arrow3DBox[TubeBox[{{
+       8.906577869384583, -7.713322695671328, -8.726628453742874}, {
+       11.093422130615416`, -9.607185380017443, -10.869289488522547`}}, 
+       0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.27563527337200805`, 0.5224408126228606, -0.6493625780909269],
+       Arrow3DBox[
+       TubeBox[{{-8.724013830984996, -1.5110435201199612`, \
+-8.54775295795853}, {-11.275986169015004`, -1.9530580950177923`, \
+-11.048164984306894`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000034`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3168644294594249, 0.5223671942980865, -0.5508271427978522], 
+      Arrow3DBox[
+       TubeBox[{{-5.07048399691022, -1.463722650268902, -8.280065694251888}, \
+{-6.92951600308978, -2.0003789648688515`, -11.315852248013535`}}, 
+       0.18000000000000013`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.35669259480600723`, 0.5222960775668728, -0.45563999899531854`], 
+      Arrow3DBox[
+       TubeBox[{{-1.6452814598608545`, -1.4248555406150467`, \
+-8.060200119840992}, {-2.3547185401391455`, -2.039246074522707, \
+-11.53571782242443}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.35669259480600723`, 0.5222960775668728, -0.45563999899531854`], 
+      Arrow3DBox[TubeBox[{{
+       1.6452814598608545`, -1.4248555406150467`, -8.060200119840992}, {
+       2.3547185401391455`, -2.039246074522707, -11.53571782242443}}, 
+       0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000034`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3168644294594249, 0.5223671942980865, -0.5508271427978522], 
+      Arrow3DBox[TubeBox[{{
+       5.07048399691022, -1.463722650268902, -8.280065694251888}, {
+       6.92951600308978, -2.0003789648688515`, -11.315852248013535`}}, 
+       0.18000000000000013`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.27563527337200805`, 0.5224408126228606, -0.6493625780909269],
+       Arrow3DBox[TubeBox[{{
+       8.724013830984996, -1.5110435201199612`, -8.54775295795853}, {
+       11.275986169015004`, -1.9530580950177923`, -11.048164984306894`}}, 
+       0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2662755154037324, 0.5224575253030924, -0.671731889354209], 
+      Arrow3DBox[TubeBox[{{-8.794630845671636, 
+       4.569824237554714, -8.616943219214885}, {-11.205369154328366`, 
+       5.82248060785855, -10.978974723050536`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.29751395289952876`, 0.5224017462948555, -0.5970737268151207],
+       Arrow3DBox[TubeBox[{{-5.143504287424404, 
+       4.454405377383711, -8.399307329338251}, {-6.856495712575596, 
+       5.937899468029553, -11.196610612927172`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3249398251891454, 0.5223527749608523, -0.5315273872630863], 
+      Arrow3DBox[TubeBox[{{-1.680551656610199, 
+       4.366201280989365, -8.23298809016792}, {-2.319448343389801, 
+       6.0261035644239, -11.362929852097503`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3249398251891454, 0.5223527749608523, -0.5315273872630863], 
+      Arrow3DBox[TubeBox[{{1.680551656610199, 
+       4.366201280989365, -8.23298809016792}, {2.319448343389801, 
+       6.0261035644239, -11.362929852097503`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.29751395289952876`, 0.5224017462948555, -0.5970737268151207],
+       Arrow3DBox[TubeBox[{{5.143504287424404, 
+       4.454405377383711, -8.399307329338251}, {6.856495712575596, 
+       5.937899468029553, -11.196610612927172`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2662755154037324, 0.5224575253030924, -0.671731889354209], 
+      Arrow3DBox[TubeBox[{{8.794630845671636, 
+       4.569824237554714, -8.616943219214885}, {11.205369154328366`, 
+       5.82248060785855, -10.978974723050536`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2812160916258195, 0.5224308475755567, -0.6360247267227133], 
+      Arrow3DBox[
+       TubeBox[{{-6.946967709256931, -4.512187886615018, -8.508263073635401}, \
+{-9.053032290743069, -5.8801169587982445`, -11.087654868630022`}}, 
+       0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3131753098275023, 0.5223737815492692, -0.5596439375925111], 
+      Arrow3DBox[
+       TubeBox[{{-3.389303970630421, -4.402835009570117, -8.302065311233513}, \
+{-4.610696029369579, -5.989469835843146, -11.29385263103191}}, 
+       0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000034`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3293714447969188, 0.522344861909931, -0.5209360580062028], 
+      Arrow3DBox[TubeBox[{{0., -4.352814108508158, -8.20774499565492}, {
+       0., -6.039490736905104, -11.388172946610503`}}, 
+       0.18000000000000013`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3131753098275023, 0.5223737815492692, -0.5596439375925111], 
+      Arrow3DBox[TubeBox[{{
+       3.389303970630421, -4.402835009570117, -8.302065311233513}, {
+       4.610696029369579, -5.989469835843146, -11.29385263103191}}, 
+       0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2812160916258195, 0.5224308475755567, -0.6360247267227133], 
+      Arrow3DBox[TubeBox[{{
+       6.946967709256931, -4.512187886615018, -8.508263073635401}, {
+       9.053032290743069, -5.8801169587982445`, -11.087654868630022`}}, 
+       0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2948428748467824, 0.5224065157422623, -0.6034574577377498], 
+      Arrow3DBox[TubeBox[{{-6.872104952017342, 
+       1.4878543664799657`, -8.41657529564798}, {-9.127895047982658, 
+       1.9762472486577913`, -11.179342646617442`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33915954375669655`, 0.5223273843887658, -0.4975430351257817],
+       Arrow3DBox[TubeBox[{{-3.328596538066974, 
+       1.4413245804574688`, -8.153363077858648}, {-4.671403461933026, 
+       2.0227770346802885`, -11.442554864406775`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3634814866264474, 0.5222839553967795, -0.4394149176653412], 
+      Arrow3DBox[TubeBox[{{0., 1.418711026848622, -8.02544150103032}, {0., 
+       2.045390588289135, -11.570476441235103`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33915954375669655`, 0.5223273843887658, -0.4975430351257817],
+       Arrow3DBox[TubeBox[{{3.328596538066974, 
+       1.4413245804574688`, -8.153363077858648}, {4.671403461933026, 
+       2.0227770346802885`, -11.442554864406775`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2948428748467824, 0.5224065157422623, -0.6034574577377498], 
+      Arrow3DBox[TubeBox[{{6.872104952017342, 
+       1.4878543664799657`, -8.41657529564798}, {9.127895047982658, 
+       1.9762472486577913`, -11.179342646617442`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2623125540512071, 0.5224646015230203, -0.6812031509316413], 
+      Arrow3DBox[TubeBox[{{-7.060647574803043, 
+       7.643375208685528, -8.647491905943488}, {-8.939352425196958, 
+       9.677132867003243, -10.948426036321935`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2812160916258195, 0.5224308475755567, -0.6360247267227133], 
+      Arrow3DBox[TubeBox[{{-3.4734838546284657`, 
+       7.520313144358363, -8.508263073635401}, {-4.526516145371534, 
+       9.800194931330408, -11.08765486863002}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2898756068890435, 0.5224153852409485, -0.615328957348253], 
+      Arrow3DBox[TubeBox[{{0., 7.468174916485846, -8.449275402455072}, {0., 
+       9.852333159202926, -11.146642539810351`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2812160916258195, 0.5224308475755567, -0.6360247267227133], 
+      Arrow3DBox[TubeBox[{{3.4734838546284657`, 
+       7.520313144358363, -8.508263073635401}, {4.526516145371534, 
+       9.800194931330408, -11.08765486863002}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2623125540512071, 0.5224646015230203, -0.6812031509316413], 
+      Arrow3DBox[TubeBox[{{7.060647574803043, 
+       7.643375208685528, -8.647491905943488}, {8.939352425196958, 
+       9.677132867003243, -10.948426036321935`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28756227924015365`, 0.5224195158931938, -0.620857684309716], 
+      Arrow3DBox[TubeBox[{{-8.639327897166782, -7.481877430570027, 
+       0.}, {-11.360672102833218`, -9.838630645118744, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.34458267966684364`, 0.5223177008973094, -0.48458203596230515`], 
+      Arrow3DBox[TubeBox[{{-4.974909364587301, -7.1806631520961695`, 
+       0.}, {-7.025090635412699, -10.139844923592602`, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.40845883822209755`, 0.5226140184146076, -0.31926296725705167`], 
+      Arrow3DBox[TubeBox[{{-1.5949683556666314`, -6.906415571197982, 
+       0.}, {-2.4050316443333686`, -10.414092504490789`, 0.}}, 
+       0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.40845883822209755`, 0.5226140184146076, -0.31926296725705167`], 
+      Arrow3DBox[TubeBox[{{1.5949683556666314`, -6.906415571197982, 0.}, {
+       2.4050316443333686`, -10.414092504490789`, 0.}}, 
+       0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.34458267966684364`, 0.5223177008973094, -0.48458203596230515`], 
+      Arrow3DBox[TubeBox[{{4.974909364587301, -7.1806631520961695`, 0.}, {
+       7.025090635412699, -10.139844923592602`, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28756227924015365`, 0.5224195158931938, -0.620857684309716], 
+      Arrow3DBox[TubeBox[{{8.639327897166782, -7.481877430570027, 0.}, {
+       11.360672102833218`, -9.838630645118744, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.35669259480600723`, 0.5222960775668728, -0.4556399989953186],
+       Arrow3DBox[TubeBox[{{-8.226407299304272, -1.4248555406150467`, 
+       0.}, {-11.773592700695728`, -2.0392460745227066`, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.6577132619634747, 0.5077619584320615, 0.7395070778363164], 
+      Arrow3DBox[TubeBox[{{-4.270615938905059, -1.2328206309661707`, 
+       0.}, {-7.729384061094941, -2.231280984171583, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{-0.6393278971667817, -0.5536742002945181, 
+       0.}, {-3.3606721028332185`, -2.9104274148432356`, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{0.6393278971667817, -0.5536742002945181, 0.}, {
+       3.3606721028332185`, -2.9104274148432356`, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.6577132619634747, 0.5077619584320615, 0.7395070778363164], 
+      Arrow3DBox[TubeBox[{{4.270615938905059, -1.2328206309661707`, 0.}, {
+       7.729384061094941, -2.231280984171583, 0.}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.35669259480600723`, 0.5222960775668728, -0.4556399989953186],
+       Arrow3DBox[TubeBox[{{8.226407299304272, -1.4248555406150467`, 0.}, {
+       11.773592700695728`, -2.0392460745227066`, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3249398251891453, 0.5223527749608523, -0.5315273872630865], 
+      Arrow3DBox[TubeBox[{{-8.402758283050995, 4.366201280989364, 
+       0.}, {-11.597241716949005`, 6.026103564423899, 0.}}, 
+       0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4715082503457345, 0.5267224286091859, -0.03837626419331103], 
+      Arrow3DBox[TubeBox[{{-4.6393278971667815`, 4.017775815432273, 
+       0.}, {-7.3606721028332185`, 6.374529029980991, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.750084417646602, 0.2971266488015265, 0.7910370879373778], 
+      Arrow3DBox[TubeBox[{{-1.3534209127036103`, 3.516290677243343, 
+       0.}, {-2.6465790872963897`, 6.876014168169921, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.750084417646602, 0.2971266488015265, 0.7910370879373778], 
+      Arrow3DBox[TubeBox[{{1.3534209127036103`, 3.516290677243343, 0.}, {
+       2.6465790872963897`, 6.876014168169921, 0.}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4715082503457345, 0.5267224286091859, -0.03837626419331103], 
+      Arrow3DBox[TubeBox[{{4.6393278971667815`, 4.017775815432273, 0.}, {
+       7.3606721028332185`, 6.374529029980991, 0.}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3249398251891453, 0.5223527749608523, -0.5315273872630865], 
+      Arrow3DBox[TubeBox[{{8.402758283050995, 4.366201280989364, 0.}, {
+       11.597241716949005`, 6.026103564423899, 0.}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3788497472309603, 0.5222565140007442, -0.40268561267660147`],
+       Arrow3DBox[TubeBox[{{-6.490469835120438, -4.215683819783171, 
+       0.}, {-9.509530164879562, -6.176621025630092, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.6163019584203662, 0.5361574403932465, 0.606683315517025], 
+      Arrow3DBox[TubeBox[{{-2.9020102936052465`, -3.769821954459121, 
+       0.}, {-5.0979897063947535`, -6.622482890954142, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733052, 0.14500114740169562`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{0., -3.3961524227066313`, 0.}, {
+       0., -6.996152422706632, 0.}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.6163019584203662, 0.5361574403932465, 0.606683315517025], 
+      Arrow3DBox[TubeBox[{{2.9020102936052465`, -3.769821954459121, 0.}, {
+       5.0979897063947535`, -6.622482890954142, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3788497472309603, 0.5222565140007442, -0.40268561267660147`],
+       Arrow3DBox[TubeBox[{{6.490469835120438, -4.215683819783171, 0.}, {
+       9.509530164879562, -6.176621025630092, 0.}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.45292278930928925`, 0.5255113673951125, -0.12117495651433907`], 
+      Arrow3DBox[TubeBox[{{-6.240760001269205, 1.3511641750052352`, 
+       0.}, {-9.759239998730795, 2.1129374401325216`, 0.}}, 
+       0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{-2.3482067161319553`, 1.0168033347537544`, 
+       0.}, {-5.651793283868045, 2.4472982803840027`, 0.}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{0., -0.06794919243112152, 0.}, {0., 
+       3.5320508075688783`, 0.}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{2.3482067161319553`, 1.0168033347537544`, 0.}, {
+       5.651793283868045, 2.4472982803840027`, 0.}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.45292278930928925`, 0.5255113673951125, -0.12117495651433907`], 
+      Arrow3DBox[TubeBox[{{6.240760001269205, 1.3511641750052352`, 0.}, {
+       9.759239998730795, 2.1129374401325216`, 0.}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.31317530982750225`, 0.5223737815492692, -0.5596439375925112],
+       Arrow3DBox[TubeBox[{{-6.778607941260842, 7.338058349283528, 
+       0.}, {-9.22139205873916, 9.982449726405244, 0.}}, 
+       0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3788497472309603, 0.5222565140007442, -0.40268561267660147`],
+       Arrow3DBox[TubeBox[{{-3.245234917560219, 7.026139699638619, 
+       0.}, {-4.754765082439781, 10.294368376050153`, 0.}}, 
+       0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4216992147680613, 0.5234767845554691, -0.26027675961366603`],
+       Arrow3DBox[TubeBox[{{0., 6.860254037844386, 0.}, {0., 
+       10.460254037844384`, 0.}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3788497472309603, 0.5222565140007442, -0.40268561267660147`],
+       Arrow3DBox[TubeBox[{{3.245234917560219, 7.026139699638619, 0.}, {
+       4.754765082439781, 10.294368376050153`, 0.}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.31317530982750225`, 0.5223737815492692, -0.5596439375925112],
+       Arrow3DBox[TubeBox[{{6.778607941260842, 7.338058349283528, 0.}, {
+       9.22139205873916, 9.982449726405244, 0.}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2525294501957112, 0.5224820701249826, -0.7045842357851548], 
+      Arrow3DBox[TubeBox[{{-8.906577869384583, -7.713322695671328, 
+       8.726628453742874}, {-11.093422130615416`, -9.607185380017443, 
+       10.869289488522547`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2722742008648817, 0.5224468141167281, -0.6573953581419928], 
+      Arrow3DBox[TubeBox[{{-5.249348109394531, -7.576781360072463, 
+       8.572149566840114}, {-6.75065189060547, -9.743726715616308, 
+       11.02376837542531}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28756227924015365`, 0.5224195158931938, -0.620857684309716], 
+      Arrow3DBox[TubeBox[{{-1.7278655794333564`, -7.481877430570027, 
+       8.464778027460238}, {-2.2721344205666436`, -9.838630645118744, 
+       11.131139914805185`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28756227924015365`, 0.5224195158931938, -0.620857684309716], 
+      Arrow3DBox[TubeBox[{{1.7278655794333564`, -7.481877430570027, 
+       8.464778027460238}, {2.2721344205666436`, -9.838630645118744, 
+       11.131139914805185`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2722742008648817, 0.5224468141167281, -0.6573953581419928], 
+      Arrow3DBox[TubeBox[{{5.249348109394531, -7.576781360072463, 
+       8.572149566840114}, {6.75065189060547, -9.743726715616308, 
+       11.02376837542531}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2525294501957112, 0.5224820701249826, -0.7045842357851548], 
+      Arrow3DBox[TubeBox[{{8.906577869384583, -7.713322695671328, 
+       8.726628453742874}, {11.093422130615416`, -9.607185380017443, 
+       10.869289488522547`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.27563527337200805`, 0.5224408126228606, -0.6493625780909269],
+       Arrow3DBox[TubeBox[{{-8.724013830984996, -1.5110435201199612`, 
+       8.54775295795853}, {-11.275986169015004`, -1.9530580950177923`, 
+       11.048164984306894`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000034`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3168644294594249, 0.5223671942980865, -0.5508271427978522], 
+      Arrow3DBox[TubeBox[{{-5.07048399691022, -1.463722650268902, 
+       8.280065694251888}, {-6.92951600308978, -2.0003789648688515`, 
+       11.315852248013535`}}, 0.18000000000000013`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.35669259480600723`, 0.5222960775668728, -0.45563999899531854`], 
+      Arrow3DBox[TubeBox[{{-1.6452814598608545`, -1.4248555406150467`, 
+       8.060200119840992}, {-2.3547185401391455`, -2.039246074522707, 
+       11.53571782242443}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.35669259480600723`, 0.5222960775668728, -0.45563999899531854`], 
+      Arrow3DBox[TubeBox[{{1.6452814598608545`, -1.4248555406150467`, 
+       8.060200119840992}, {2.3547185401391455`, -2.039246074522707, 
+       11.53571782242443}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000034`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3168644294594249, 0.5223671942980865, -0.5508271427978522], 
+      Arrow3DBox[TubeBox[{{5.07048399691022, -1.463722650268902, 
+       8.280065694251888}, {6.92951600308978, -2.0003789648688515`, 
+       11.315852248013535`}}, 0.18000000000000013`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.27563527337200805`, 0.5224408126228606, -0.6493625780909269],
+       Arrow3DBox[TubeBox[{{8.724013830984996, -1.5110435201199612`, 
+       8.54775295795853}, {11.275986169015004`, -1.9530580950177923`, 
+       11.048164984306894`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2662755154037324, 0.5224575253030924, -0.671731889354209], 
+      Arrow3DBox[TubeBox[{{-8.794630845671636, 4.569824237554714, 
+       8.616943219214885}, {-11.205369154328366`, 5.82248060785855, 
+       10.978974723050536`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.29751395289952876`, 0.5224017462948555, -0.5970737268151207],
+       Arrow3DBox[TubeBox[{{-5.143504287424404, 4.454405377383711, 
+       8.399307329338251}, {-6.856495712575596, 5.937899468029553, 
+       11.196610612927172`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3249398251891454, 0.5223527749608523, -0.5315273872630863], 
+      Arrow3DBox[TubeBox[{{-1.680551656610199, 4.366201280989365, 
+       8.23298809016792}, {-2.319448343389801, 6.0261035644239, 
+       11.362929852097503`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3249398251891454, 0.5223527749608523, -0.5315273872630863], 
+      Arrow3DBox[TubeBox[{{1.680551656610199, 4.366201280989365, 
+       8.23298809016792}, {2.319448343389801, 6.0261035644239, 
+       11.362929852097503`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.29751395289952876`, 0.5224017462948555, -0.5970737268151207],
+       Arrow3DBox[TubeBox[{{5.143504287424404, 4.454405377383711, 
+       8.399307329338251}, {6.856495712575596, 5.937899468029553, 
+       11.196610612927172`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2662755154037324, 0.5224575253030924, -0.671731889354209], 
+      Arrow3DBox[TubeBox[{{8.794630845671636, 4.569824237554714, 
+       8.616943219214885}, {11.205369154328366`, 5.82248060785855, 
+       10.978974723050536`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2812160916258195, 0.5224308475755567, -0.6360247267227133], 
+      Arrow3DBox[TubeBox[{{-6.946967709256931, -4.512187886615018, 
+       8.508263073635401}, {-9.053032290743069, -5.8801169587982445`, 
+       11.087654868630022`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3131753098275023, 0.5223737815492692, -0.5596439375925111], 
+      Arrow3DBox[TubeBox[{{-3.389303970630421, -4.402835009570117, 
+       8.302065311233513}, {-4.610696029369579, -5.989469835843146, 
+       11.29385263103191}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000034`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3293714447969188, 0.522344861909931, -0.5209360580062028], 
+      Arrow3DBox[TubeBox[{{0., -4.352814108508158, 8.20774499565492}, {
+       0., -6.039490736905104, 11.388172946610503`}}, 
+       0.18000000000000013`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3131753098275023, 0.5223737815492692, -0.5596439375925111], 
+      Arrow3DBox[TubeBox[{{3.389303970630421, -4.402835009570117, 
+       8.302065311233513}, {4.610696029369579, -5.989469835843146, 
+       11.29385263103191}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2812160916258195, 0.5224308475755567, -0.6360247267227133], 
+      Arrow3DBox[TubeBox[{{6.946967709256931, -4.512187886615018, 
+       8.508263073635401}, {9.053032290743069, -5.8801169587982445`, 
+       11.087654868630022`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2948428748467824, 0.5224065157422623, -0.6034574577377498], 
+      Arrow3DBox[TubeBox[{{-6.872104952017342, 1.4878543664799657`, 
+       8.41657529564798}, {-9.127895047982658, 1.9762472486577913`, 
+       11.179342646617442`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33915954375669655`, 0.5223273843887658, -0.4975430351257817],
+       Arrow3DBox[TubeBox[{{-3.328596538066974, 1.4413245804574688`, 
+       8.153363077858648}, {-4.671403461933026, 2.0227770346802885`, 
+       11.442554864406775`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3634814866264474, 0.5222839553967795, -0.4394149176653412], 
+      Arrow3DBox[TubeBox[{{0., 1.418711026848622, 8.02544150103032}, {0., 
+       2.045390588289135, 11.570476441235103`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33915954375669655`, 0.5223273843887658, -0.4975430351257817],
+       Arrow3DBox[TubeBox[{{3.328596538066974, 1.4413245804574688`, 
+       8.153363077858648}, {4.671403461933026, 2.0227770346802885`, 
+       11.442554864406775`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2948428748467824, 0.5224065157422623, -0.6034574577377498], 
+      Arrow3DBox[TubeBox[{{6.872104952017342, 1.4878543664799657`, 
+       8.41657529564798}, {9.127895047982658, 1.9762472486577913`, 
+       11.179342646617442`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2623125540512071, 0.5224646015230203, -0.6812031509316413], 
+      Arrow3DBox[TubeBox[{{-7.060647574803043, 7.643375208685528, 
+       8.647491905943488}, {-8.939352425196958, 9.677132867003243, 
+       10.948426036321935`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2812160916258195, 0.5224308475755567, -0.6360247267227133], 
+      Arrow3DBox[TubeBox[{{-3.4734838546284657`, 7.520313144358363, 
+       8.508263073635401}, {-4.526516145371534, 9.800194931330408, 
+       11.08765486863002}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2898756068890435, 0.5224153852409485, -0.615328957348253], 
+      Arrow3DBox[TubeBox[{{0., 7.468174916485846, 8.449275402455072}, {0., 
+       9.852333159202926, 11.146642539810351`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2812160916258195, 0.5224308475755567, -0.6360247267227133], 
+      Arrow3DBox[TubeBox[{{3.4734838546284657`, 7.520313144358363, 
+       8.508263073635401}, {4.526516145371534, 9.800194931330408, 
+       11.08765486863002}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2623125540512071, 0.5224646015230203, -0.6812031509316413], 
+      Arrow3DBox[TubeBox[{{7.060647574803043, 7.643375208685528, 
+       8.647491905943488}, {8.939352425196958, 9.677132867003243, 
+       10.948426036321935`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2948428748467824, 0.5224065157422623, -0.6034574577377497], 
+      Arrow3DBox[
+       TubeBox[{{-6.872104952017342, -6.4473689214131795`, \
+-5.611050197098653}, {-9.127895047982658, -8.563738077517089, \
+-7.452895097744962}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33915954375669655`, 0.5223273843887658, -0.4975430351257816],
+       Arrow3DBox[
+       TubeBox[{{-3.328596538066974, -6.245739848649027, \
+-5.4355753852390984`}, {-4.671403461933026, -8.765367150281241, \
+-7.628369909604515}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3634814866264474, 0.5222839553967795, -0.43941491766534124`],
+       Arrow3DBox[TubeBox[{{0., -6.147747783010691, -5.350294334020213}, {
+       0., -8.863359215919576, -7.713650960823401}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33915954375669655`, 0.5223273843887658, -0.4975430351257816],
+       Arrow3DBox[TubeBox[{{
+       3.328596538066974, -6.245739848649027, -5.4355753852390984`}, {
+       4.671403461933026, -8.765367150281241, -7.628369909604515}}, 
+       0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2948428748467824, 0.5224065157422623, -0.6034574577377497], 
+      Arrow3DBox[TubeBox[{{
+       6.872104952017342, -6.4473689214131795`, -5.611050197098653}, {
+       9.127895047982658, -8.563738077517089, -7.452895097744962}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3504112836824224, 0.5223072934064917, -0.4706519901324003], 
+      Arrow3DBox[
+       TubeBox[{{-6.607899455774245, -0.47688406619615403`, \
+-5.395327312753851}, {-9.392100544225755, -0.6778164721830948, \
+-7.668617982089764}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.49261377389559613`, 0.5280977015133033, 0.055649369459382425`], 
+      Arrow3DBox[
+       TubeBox[{{-3.0626398409380684`, -0.4420539841491155, \
+-5.001269917477934}, {-4.937360159061932, -0.7126465542301332, \
+-8.06267537736568}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000034`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.6163019584203663, 0.5361574403932465, 0.6066833155170253], 
+      Arrow3DBox[TubeBox[{{0., -0.41886910605101246`, -4.738962965091499}, {
+       0., -0.7358314323282363, -8.324982329752117}}, 
+       0.18000000000000013`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.49261377389559613`, 0.5280977015133033, 0.055649369459382425`], 
+      Arrow3DBox[TubeBox[{{
+       3.0626398409380684`, -0.4420539841491155, -5.001269917477934}, {
+       4.937360159061932, -0.7126465542301332, -8.06267537736568}}, 
+       0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3504112836824224, 0.5223072934064917, -0.4706519901324003], 
+      Arrow3DBox[TubeBox[{{
+       6.607899455774245, -0.47688406619615403`, -5.395327312753851}, {
+       9.392100544225755, -0.6778164721830948, -7.668617982089764}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3063993758096852, 0.5223858805820535, -0.5758380504806606], 
+      Arrow3DBox[TubeBox[{{-6.812308017667055, 
+       5.4079958182287395`, -5.562226204651685}, {-9.187691982332945, 
+       7.293710103943026, -7.501719090191931}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3634814866264474, 0.5222839553967795, -0.4394149176653412], 
+      Arrow3DBox[TubeBox[{{-3.2763727730133674`, 
+       5.201940431778277, -5.350294334020213}, {-4.723627226986633, 
+       7.4997654903934885`, -7.713650960823401}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3971805640965842, 0.5222237826970395, -0.3588759597382248], 
+      Arrow3DBox[TubeBox[{{0., 5.096078945047417, -5.241413788370932}, {0., 
+       7.60562697712435, -7.822531506472684}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3634814866264474, 0.5222839553967795, -0.4394149176653412], 
+      Arrow3DBox[TubeBox[{{3.2763727730133674`, 
+       5.201940431778277, -5.350294334020213}, {4.723627226986633, 
+       7.4997654903934885`, -7.713650960823401}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3063993758096852, 0.5223858805820535, -0.5758380504806606], 
+      Arrow3DBox[TubeBox[{{6.812308017667055, 
+       5.4079958182287395`, -5.562226204651685}, {9.187691982332945, 
+       7.293710103943026, -7.501719090191931}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.29751395289952876`, 0.5224017462948555, -0.5970737268151207],
+       Arrow3DBox[
+       TubeBox[{{-8.572507145707341, -3.4645375157428857`, \
+-5.599538219558834}, {-11.427492854292659`, -4.618366252911874, \
+-7.4644070752847815`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.37084207460018775`, 0.5222708124123626, -0.4218235136970501],
+       Arrow3DBox[
+       TubeBox[{{-4.891943379748033, -3.2950922983509234`, \
+-5.3256733915417245`}, {-7.108056620251967, -4.787811470303836, \
+-7.738271903301891}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4715082503457345, 0.5267224286091859, -0.03837626419331103], 
+      Arrow3DBox[
+       TubeBox[{{-1.5464426323889273`, -3.1249367453362114`, \
+-5.050660487785725}, {-2.4535573676110727`, -4.957967023318548, \
+-8.01328480705789}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4715082503457345, 0.5267224286091859, -0.03837626419331103], 
+      Arrow3DBox[TubeBox[{{
+       1.5464426323889273`, -3.1249367453362114`, -5.050660487785725}, {
+       2.4535573676110727`, -4.957967023318548, -8.01328480705789}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.37084207460018775`, 0.5222708124123626, -0.4218235136970501],
+       Arrow3DBox[TubeBox[{{
+       4.891943379748033, -3.2950922983509234`, -5.3256733915417245`}, {
+       7.108056620251967, -4.787811470303836, -7.738271903301891}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.29751395289952876`, 0.5224017462948555, -0.5970737268151207],
+       Arrow3DBox[TubeBox[{{
+       8.572507145707341, -3.4645375157428857`, -5.599538219558834}, {
+       11.427492854292659`, -4.618366252911874, -7.4644070752847815`}}, 
+       0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3032806512120806, 0.5223914493421761, -0.583291632240438], 
+      Arrow3DBox[TubeBox[{{-8.535180774211913, 
+       2.4638944587866836`, -5.57515673579527}, {-11.464819225788087`, 
+       3.309608233109575, -7.488788559048344}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3875937575749072, 0.5222409007926552, -0.3817879046657668], 
+      Arrow3DBox[TubeBox[{{-4.842118462375182, 
+       2.3296653314169733`, -5.271430891968471}, {-7.157881537624818, 
+       3.443837360479285, -7.792514402875144}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.516789191779983, 0.5296730141125648, 0.1633514589161033], 
+      Arrow3DBox[TubeBox[{{-1.5145760990264656`, 
+       2.1861022962027583`, -4.946584825639848}, {-2.4854239009735344`, 
+       3.5874003956935, -8.117360469203767}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.516789191779983, 0.5296730141125648, 0.1633514589161033], 
+      Arrow3DBox[TubeBox[{{1.5145760990264656`, 
+       2.1861022962027583`, -4.946584825639848}, {2.4854239009735344`, 
+       3.5874003956935, -8.117360469203767}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3875937575749072, 0.5222409007926552, -0.3817879046657668], 
+      Arrow3DBox[TubeBox[{{4.842118462375182, 
+       2.3296653314169733`, -5.271430891968471}, {7.157881537624818, 
+       3.443837360479285, -7.792514402875144}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3032806512120806, 0.5223914493421761, -0.583291632240438], 
+      Arrow3DBox[TubeBox[{{8.535180774211913, 
+       2.4638944587866836`, -5.57515673579527}, {11.464819225788087`, 
+       3.309608233109575, -7.488788559048344}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.261080001217716, 0.5224668023557175, -0.6841488850066306], 
+      Arrow3DBox[TubeBox[{{-8.835676790764328, 
+       8.672176635154534, -5.7714399118732285`}, {-11.164323209235672`, 
+       10.957732517292744`, -7.292505382970385}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28756227924015365`, 0.5224195158931938, -0.620857684309716], 
+      Arrow3DBox[TubeBox[{{-5.183596738300069, 
+       8.479461087979365, -5.643185351640158}, {-6.81640326169993, 
+       11.150448064467911`, -7.420759943203456}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.30969257451065224`, 0.522380000282903, -0.5679674851259306], 
+      Arrow3DBox[TubeBox[{{-1.6989528763974473`, 
+       8.33757265449272, -5.5487568589433645`}, {-2.3010471236025527`, 
+       11.292336497954556`, -7.515188435900251}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.30969257451065224`, 0.522380000282903, -0.5679674851259306], 
+      Arrow3DBox[TubeBox[{{1.6989528763974473`, 
+       8.33757265449272, -5.5487568589433645`}, {2.3010471236025527`, 
+       11.292336497954556`, -7.515188435900251}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28756227924015365`, 0.5224195158931938, -0.620857684309716], 
+      Arrow3DBox[TubeBox[{{5.183596738300069, 
+       8.479461087979365, -5.643185351640158}, {6.81640326169993, 
+       11.150448064467911`, -7.420759943203456}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.261080001217716, 0.5224668023557175, -0.6841488850066306], 
+      Arrow3DBox[TubeBox[{{8.835676790764328, 
+       8.672176635154534, -5.7714399118732285`}, {11.164323209235672`, 
+       10.957732517292744`, -7.292505382970385}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3207788388398619, 0.5223602047720226, -0.5414719177867253], 
+      Arrow3DBox[TubeBox[{{-6.741866158408105, -6.325179642270689, 
+       2.752355333706281}, {-9.258133841591896, -8.68592735665958, 
+       3.779617313715529}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.39718056409658414`, 0.5222237826970395, -0.35887595973822495`], 
+      Arrow3DBox[TubeBox[{{-3.2096973280742294`, -6.022638753237856, 
+       2.6207068941854668`}, {-4.790302671925771, -8.988468245692411, 
+       3.9112657532363433`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4529227893092892, 0.5255113673951125, -0.12117495651433927`],
+       Arrow3DBox[TubeBox[{{0., -5.855044758356014, 2.547779601713409}, {
+       0., -9.156062240574254, 3.984193045708401}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.39718056409658414`, 0.5222237826970395, -0.35887595973822495`], 
+      Arrow3DBox[TubeBox[{{3.2096973280742294`, -6.022638753237856, 
+       2.6207068941854668`}, {4.790302671925771, -8.988468245692411, 
+       3.9112657532363433`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3207788388398619, 0.5223602047720226, -0.5414719177867253], 
+      Arrow3DBox[TubeBox[{{6.741866158408105, -6.325179642270689, 
+       2.752355333706281}, {9.258133841591896, -8.68592735665958, 
+       3.779617313715529}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4216992147680612, 0.5234767845554691, -0.26027675961366636`],
+       Arrow3DBox[TubeBox[{{-6.337231224733878, -0.4573502691896247, 
+       2.587163813771819}, {-9.662768775266123, -0.6973502691896241, 
+       3.944808833649991}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733049, 0.1450011474016964, 0.8282532063436997], 
+      Arrow3DBox[TubeBox[{{-2.6143593539448986`, -0.3773502691896249, 
+       2.1346154738124286`}, {-5.385640646055101, -0.7773502691896239, 
+       4.3973571736093815`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{0., -0.26401048846936903`, 1.4934688536085134`}, {
+       0., -0.8906900499098798, 5.038503793813296}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733049, 0.1450011474016964, 0.8282532063436997], 
+      Arrow3DBox[TubeBox[{{2.6143593539448986`, -0.3773502691896249, 
+       2.1346154738124286`}, {5.385640646055101, -0.7773502691896239, 
+       4.3973571736093815`}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4216992147680612, 0.5234767845554691, -0.26027675961366636`],
+       Arrow3DBox[TubeBox[{{6.337231224733878, -0.4573502691896247, 
+       2.587163813771819}, {9.662768775266123, -0.6973502691896241, 
+       3.944808833649991}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.33915954375669655`, 0.5223273843887658, -0.49754303512578163`], 
+      Arrow3DBox[TubeBox[{{-6.657193076133948, 5.284856795010715, 
+       2.7177876926195506`}, {-9.342806923866052, 7.416849127161049, 
+       3.8141849548022595`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.45292278930928925`, 0.5255113673951125, -0.12117495651433907`], 
+      Arrow3DBox[TubeBox[{{-3.1203800006346025`, 4.954268641685858, 
+       2.547779601713409}, {-4.8796199993653975`, 7.747437280485907, 
+       3.984193045708401}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.5447568320776071, 0.5314954345705343, 0.2879479937778004], 
+      Arrow3DBox[TubeBox[{{0., 4.750117835846085, 2.4427931150268622`}, {0., 
+       7.95158808632568, 4.089179532394948}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.45292278930928925`, 0.5255113673951125, -0.12117495651433907`], 
+      Arrow3DBox[TubeBox[{{3.1203800006346025`, 4.954268641685858, 
+       2.547779601713409}, {4.8796199993653975`, 7.747437280485907, 
+       3.984193045708401}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.33915954375669655`, 0.5223273843887658, -0.49754303512578163`], 
+      Arrow3DBox[TubeBox[{{6.657193076133948, 5.284856795010715, 
+       2.7177876926195506`}, {9.342806923866052, 7.416849127161049, 
+       3.8141849548022595`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3249398251891453, 0.5223527749608523, -0.5315273872630865], 
+      Arrow3DBox[TubeBox[{{-8.402758283050995, -3.3959343296583944`, 
+       2.7443293633893076`}, {-11.597241716949005`, -4.686969438996365, 
+       3.7876432840325025`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4715082503457345, 0.5267224286091859, -0.03837626419331103], 
+      Arrow3DBox[TubeBox[{{-4.6393278971667815`, -3.124936745336212, 
+       2.5253302438928635`}, {-7.3606721028332185`, -4.957967023318547, 
+       4.0066424035289465`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.750084417646602, 0.2971266488015265, 0.7910370879373778], 
+      Arrow3DBox[TubeBox[{{-1.3534209127036103`, -2.7348927489670443`, 
+       2.2101270955571612`}, {-2.6465790872963897`, -5.348011019687715, 
+       4.321845551864649}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.750084417646602, 0.2971266488015265, 0.7910370879373778], 
+      Arrow3DBox[TubeBox[{{1.3534209127036103`, -2.7348927489670443`, 
+       2.2101270955571612`}, {2.6465790872963897`, -5.348011019687715, 
+       4.321845551864649}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4715082503457345, 0.5267224286091859, -0.03837626419331103], 
+      Arrow3DBox[TubeBox[{{4.6393278971667815`, -3.124936745336212, 
+       2.5253302438928635`}, {7.3606721028332185`, -4.957967023318547, 
+       4.0066424035289465`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3249398251891453, 0.5223527749608523, -0.5315273872630865], 
+      Arrow3DBox[TubeBox[{{8.402758283050995, -3.3959343296583944`, 
+       2.7443293633893076`}, {11.597241716949005`, -4.686969438996365, 
+       3.7876432840325025`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33410098841193736`, 0.5223364168892, -0.5096327066144029], 
+      Arrow3DBox[TubeBox[{{-8.34994270534922, 2.410420834325662, 
+       2.7270798679440187`}, {-11.65005729465078, 3.363081857570596, 
+       3.8048927794777914`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.5167891917799828, 0.5296730141125648, 0.16335145891610253`], 
+      Arrow3DBox[TubeBox[{{-4.543728297079397, 2.1861022962027583`, 
+       2.473292412819925}, {-7.456271702920603, 3.5874003956935, 
+       4.058680234601885}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{-1.2493481093945311`, 1.8032786681762065`, 
+       2.0401769194183066`}, {-2.750651890605469, 3.9702240237200517`, 
+       4.4917957280035035`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{1.2493481093945311`, 1.8032786681762065`, 
+       2.0401769194183066`}, {2.750651890605469, 3.9702240237200517`, 
+       4.4917957280035035`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.5167891917799828, 0.5296730141125648, 0.16335145891610253`], 
+      Arrow3DBox[TubeBox[{{4.543728297079397, 2.1861022962027583`, 
+       2.473292412819925}, {7.456271702920603, 3.5874003956935, 
+       4.058680234601885}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33410098841193736`, 0.5223364168892, -0.5096327066144029], 
+      Arrow3DBox[TubeBox[{{8.34994270534922, 2.410420834325662, 
+       2.7270798679440187`}, {11.65005729465078, 3.363081857570596, 
+       3.8048927794777914`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999997, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2722742008648817, 0.5224468141167281, -0.6573953581419928], 
+      Arrow3DBox[TubeBox[{{-8.748913515657552, 8.587018874748793, 
+       2.8573831889467054`}, {-11.251086484342448`, 11.042890277698483`, 
+       3.6745894584751047`}}, 0.1799999999999999]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.30969257451065224`, 0.522380000282903, -0.5679674851259306], 
+      Arrow3DBox[TubeBox[{{-5.096858629192342, 8.33757265449272, 
+       2.774378429471683}, {-6.903141370807658, 11.292336497954556`, 
+       3.757594217950127}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.34458267966684364`, 0.5223177008973094, -0.4845820359623052],
+       Arrow3DBox[TubeBox[{{-1.6583031215291004`, 8.138084905708993, 
+       2.7079976577405724`}, {-2.3416968784708994`, 11.491824246738283`, 
+       3.8239749896812376`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.34458267966684364`, 0.5223177008973094, -0.4845820359623052],
+       Arrow3DBox[TubeBox[{{1.6583031215291004`, 8.138084905708993, 
+       2.7079976577405724`}, {2.3416968784708994`, 11.491824246738283`, 
+       3.8239749896812376`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.30969257451065224`, 0.522380000282903, -0.5679674851259306], 
+      Arrow3DBox[TubeBox[{{5.096858629192342, 8.33757265449272, 
+       2.774378429471683}, {6.903141370807658, 11.292336497954556`, 
+       3.757594217950127}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999997, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.2722742008648817, 0.5224468141167281, -0.6573953581419928], 
+      Arrow3DBox[TubeBox[{{8.748913515657552, 8.587018874748793, 
+       2.8573831889467054`}, {11.251086484342448`, 11.042890277698483`, 
+       3.6745894584751047`}}, 0.1799999999999999]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.30328065121208064`, 0.5223914493421761, -0.5832916322404379],
+       Arrow3DBox[
+       TubeBox[{{-8.535180774211913, -5.420567809330702, \
+-2.7875783678976345`}, {-11.464819225788087`, -7.281138112841063, \
+-3.744394279524172}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3875937575749073, 0.5222409007926552, -0.3817879046657666], 
+      Arrow3DBox[
+       TubeBox[{{-4.842118462375182, -5.12526372911734, -2.635715445984235}, \
+{-7.157881537624818, -7.576442193054425, -3.8962572014375714`}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.516789191779983, 0.5296730141125648, 0.1633514589161031], 
+      Arrow3DBox[
+       TubeBox[{{-1.5145760990264656`, -4.809425051646067, \
+-2.473292412819924}, {-2.4854239009735344`, -7.892280870525698, \
+-4.058680234601883}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.516789191779983, 0.5296730141125648, 0.1633514589161031], 
+      Arrow3DBox[TubeBox[{{
+       1.5145760990264656`, -4.809425051646067, -2.473292412819924}, {
+       2.4854239009735344`, -7.892280870525698, -4.058680234601883}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3875937575749073, 0.5222409007926552, -0.3817879046657666], 
+      Arrow3DBox[TubeBox[{{
+       4.842118462375182, -5.12526372911734, -2.635715445984235}, {
+       7.157881537624818, -7.576442193054425, -3.8962572014375714`}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.30328065121208064`, 0.5223914493421761, -0.5832916322404379],
+       Arrow3DBox[TubeBox[{{
+       8.535180774211913, -5.420567809330702, -2.7875783678976345`}, {
+       11.464819225788087`, -7.281138112841063, -3.744394279524172}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3445826796668437, 0.5223177008973094, -0.48458203596230504`],
+       Arrow3DBox[TubeBox[{{-8.291515607645502, 
+       0.4787108768064118, -2.707997657740571}, {-11.7084843923545, 
+       0.6759896615728406, -3.8239749896812354`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.5774849217875925, 0.533628054255392, 0.4337524494670196], 
+      Arrow3DBox[TubeBox[{{-4.424658091822739, 
+       0.42576292339765265`, -2.4084788024983075`}, {-7.575341908177261, 
+       0.7289376149815997, -4.123493844923499}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{-1.0704839969102198`, 
+       0.3090221118896512, -1.7480930468300815`}, {-2.9295160030897804`, 
+       0.8456784264896011, -4.783879600591725}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{1.0704839969102198`, 
+       0.3090221118896512, -1.7480930468300815`}, {2.9295160030897804`, 
+       0.8456784264896011, -4.783879600591725}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.5774849217875925, 0.533628054255392, 0.4337524494670196], 
+      Arrow3DBox[TubeBox[{{4.424658091822739, 
+       0.42576292339765265`, -2.4084788024983075`}, {7.575341908177261, 
+       0.7289376149815997, -4.123493844923499}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3445826796668437, 0.5223177008973094, -0.48458203596230504`],
+       Arrow3DBox[TubeBox[{{8.291515607645502, 
+       0.4787108768064118, -2.707997657740571}, {11.7084843923545, 
+       0.6759896615728406, -3.8239749896812354`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.29229975262889807`, 0.5224110567131466, -0.6095353811910315],
+       Arrow3DBox[TubeBox[{{-8.607118181438555, 
+       6.460118598700614, -2.811073026714178}, {-11.392881818561445`, 
+       8.55098840022966, -3.7208996207076286`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3566925948060071, 0.5222960775668728, -0.4556399989953187], 
+      Arrow3DBox[TubeBox[{{-4.935844379582564, 
+       6.174374009331872, -2.68673337328033}, {-7.064155620417436, 
+       8.836732989598401, -3.8452392741414765`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4364314647276547, 0.5244367637826248, -0.19464421871468818`],
+       Arrow3DBox[TubeBox[{{-1.5727586030502128`, 
+       5.902211918468712, -2.56830404403033}, {-2.4272413969497872`, 
+       9.108895080461561, -3.9636686033914765`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4364314647276547, 0.5244367637826248, -0.19464421871468818`],
+       Arrow3DBox[TubeBox[{{1.5727586030502128`, 
+       5.902211918468712, -2.56830404403033}, {2.4272413969497872`, 
+       9.108895080461561, -3.9636686033914765`}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3566925948060071, 0.5222960775668728, -0.4556399989953187], 
+      Arrow3DBox[TubeBox[{{4.935844379582564, 
+       6.174374009331872, -2.68673337328033}, {7.064155620417436, 
+       8.836732989598401, -3.8452392741414765`}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.29229975262889807`, 0.5224110567131466, -0.6095353811910315],
+       Arrow3DBox[TubeBox[{{8.607118181438555, 
+       6.460118598700614, -2.811073026714178}, {11.392881818561445`, 
+       8.55098840022966, -3.7208996207076286`}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.39718056409658414`, 0.5222237826970395, -0.35887595973822495`], 
+      Arrow3DBox[
+       TubeBox[{{-6.419394656148459, -2.3163995204760983`, \
+-2.6207068941854654`}, {-9.580605343851541, -3.457103171420159, \
+-3.911265753236341}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.698620488051717, 0.41448060702425277`, 0.7623275108810723], 
+      Arrow3DBox[
+       TubeBox[{{-2.7829778731909363`, -2.0084412802944485`, \
+-2.2722919182579133`}, {-5.217022126809064, -3.765061411601808, \
+-4.259680729163893}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{0., -1.6946722245895887`, -1.917302755033264}, {
+       0., -4.078830467306667, -4.614669892388543}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.698620488051717, 0.41448060702425277`, 0.7623275108810723], 
+      Arrow3DBox[TubeBox[{{
+       2.7829778731909363`, -2.0084412802944485`, -2.2722919182579133`}, {
+       5.217022126809064, -3.765061411601808, -4.259680729163893}}, 
+       0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.39718056409658414`, 0.5222237826970395, -0.35887595973822495`], 
+      Arrow3DBox[TubeBox[{{
+       6.419394656148459, -2.3163995204760983`, -2.6207068941854654`}, {
+       9.580605343851541, -3.457103171420159, -3.911265753236341}}, 
+       0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3788497472309603, 0.5222565140007442, -0.40268561267660136`],
+       Arrow3DBox[TubeBox[{{-6.490469835120438, 
+       3.278865193164689, -2.6497232144951886`}, {-9.509530164879562, 
+       4.80403857549007, -3.882249432926618}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.6163019584203663, 0.5361574403932465, 0.6066833155170253], 
+      Arrow3DBox[TubeBox[{{-2.902010293605246, 
+       2.9320837423570936`, -2.3694814825457495`}, {-5.097989706394754, 
+       5.150820026297666, -4.162491164876057}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.8167969189733053, 0.14500114740169545`, 0.8282532063436999], 
+      Arrow3DBox[TubeBox[{{0., 2.6414518843273793`, -2.1346154738124272`}, {
+       0., 5.44145188432738, -4.397357173609379}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.6163019584203663, 0.5361574403932465, 0.6066833155170253], 
+      Arrow3DBox[TubeBox[{{2.902010293605246, 
+       2.9320837423570936`, -2.3694814825457495`}, {5.097989706394754, 
+       5.150820026297666, -4.162491164876057}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3788497472309603, 0.5222565140007442, -0.40268561267660136`],
+       Arrow3DBox[TubeBox[{{6.490469835120438, 
+       3.278865193164689, -2.6497232144951886`}, {9.509530164879562, 
+       4.80403857549007, -3.882249432926618}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28323901117501527`, 0.5224272354727998, -0.6311900592868762],
+       Arrow3DBox[TubeBox[{{-8.669401712281768, -5.505809553528769, 
+       5.662829485413631}, {-11.330598287718232`, -7.195896368642995, 
+       7.401115809429989}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33410098841193747`, 0.5223364168892, -0.5096327066144026], 
+      Arrow3DBox[TubeBox[{{-5.009965623209532, -5.302925835516456, 
+       5.454159735888037}, {-6.990034376790469, -7.398780086655311, 
+       7.609785558955583}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3875937575749072, 0.5222409007926552, -0.3817879046657668], 
+      Arrow3DBox[TubeBox[{{-1.6140394874583939`, -5.12526372911734, 
+       5.271430891968473}, {-2.3859605125416063`, -7.576442193054425, 
+       7.792514402875147}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3875937575749072, 0.5222409007926552, -0.3817879046657668], 
+      Arrow3DBox[TubeBox[{{1.6140394874583939`, -5.12526372911734, 
+       5.271430891968473}, {2.3859605125416063`, -7.576442193054425, 
+       7.792514402875147}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.33410098841193747`, 0.5223364168892, -0.5096327066144026], 
+      Arrow3DBox[TubeBox[{{5.009965623209532, -5.302925835516456, 
+       5.454159735888037}, {6.990034376790469, -7.398780086655311, 
+       7.609785558955583}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.28323901117501527`, 0.5224272354727998, -0.6311900592868762],
+       Arrow3DBox[TubeBox[{{8.669401712281768, -5.505809553528769, 
+       5.662829485413631}, {11.330598287718232`, -7.195896368642995, 
+       7.401115809429989}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3096925745106522, 0.522380000282903, -0.5679674851259306], 
+      Arrow3DBox[TubeBox[{{-8.494764381987236, 0.49044545026427794`, 
+       5.548756858943367}, {-11.505235618012764`, 0.6642550881149745, 
+       7.515188435900253}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4084588382220974, 0.5226140184146076, -0.3192629672570524], 
+      Arrow3DBox[TubeBox[{{-4.784905066999895, 0.46042770474653255`, 
+       5.209144836358889}, {-7.215094933000105, 0.6942728336327199, 
+       7.854800458484731}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.5774849217875921, 0.533628054255392, 0.43375244946701813`], 
+      Arrow3DBox[TubeBox[{{-1.4748860306075797`, 0.4257629233976527, 
+       4.8169576049966185`}, {-2.5251139693924203`, 0.7289376149815996, 
+       8.246987689847002}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.5774849217875921, 0.533628054255392, 0.43375244946701813`], 
+      Arrow3DBox[TubeBox[{{1.4748860306075797`, 0.4257629233976527, 
+       4.8169576049966185`}, {2.5251139693924203`, 0.7289376149815996, 
+       8.246987689847002}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4084588382220974, 0.5226140184146076, -0.3192629672570524], 
+      Arrow3DBox[TubeBox[{{4.784905066999895, 0.46042770474653255`, 
+       5.209144836358889}, {7.215094933000105, 0.6942728336327199, 
+       7.854800458484731}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3096925745106522, 0.522380000282903, -0.5679674851259306], 
+      Arrow3DBox[TubeBox[{{8.494764381987236, 0.49044545026427794`, 
+       5.548756858943367}, {11.505235618012764`, 0.6642550881149745, 
+       7.515188435900253}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.275635273372008, 0.5224408126228606, -0.649362578090927], 
+      Arrow3DBox[TubeBox[{{-8.724013830984996, 6.547855253853169, 
+       5.698501971972354}, {-11.275986169015004`, 8.463251745077104, 
+       7.365443322871266}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.31686442945942483`, 0.5223671942980865, -0.5508271427978522],
+       Arrow3DBox[TubeBox[{{-5.0704839969102204`, 6.342798151165246, 
+       5.520043796167928}, {-6.9295160030897796`, 8.668308847765028, 
+       7.543901498675692}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999997, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3566925948060071, 0.5222960775668728, -0.4556399989953189], 
+      Arrow3DBox[TubeBox[{{-1.6452814598608545`, 6.174374009331873, 
+       5.373466746560664}, {-2.3547185401391455`, 8.8367329895984, 
+       7.6904785482829565`}}, 0.1799999999999999]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999997, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3566925948060071, 0.5222960775668728, -0.4556399989953189], 
+      Arrow3DBox[TubeBox[{{1.6452814598608545`, 6.174374009331873, 
+       5.373466746560664}, {2.3547185401391455`, 8.8367329895984, 
+       7.6904785482829565`}}, 0.1799999999999999]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.31686442945942483`, 0.5223671942980865, -0.5508271427978522],
+       Arrow3DBox[TubeBox[{{5.0704839969102204`, 6.342798151165246, 
+       5.520043796167928}, {6.9295160030897796`, 8.668308847765028, 
+       7.543901498675692}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999998, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.275635273372008, 0.5224408126228606, -0.649362578090927], 
+      Arrow3DBox[TubeBox[{{8.724013830984996, 6.547855253853169, 
+       5.698501971972354}, {11.275986169015004`, 8.463251745077104, 
+       7.365443322871266}}, 0.17999999999999994`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3391595437566965, 0.5223273843887658, -0.4975430351257818], 
+      Arrow3DBox[TubeBox[{{-6.657193076133948, -2.402207634095779, 
+       5.435575385239101}, {-9.342806923866052, -3.371295057800477, 
+       7.628369909604519}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4529227893092891, 0.5255113673951125, -0.1211749565143398], 
+      Arrow3DBox[TubeBox[{{-3.1203800006346025`, -2.25194029167539, 
+       5.095559203426818}, {-4.8796199993653975`, -3.5215624002208665`, 
+       7.968386091416802}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.5447568320776067, 0.5314954345705342, 0.28794799377779895`], 
+      Arrow3DBox[TubeBox[{{0., -2.15914447083913, 4.885586230053725}, {
+       0., -3.6143582210571275`, 8.178359064789895}}, 
+       0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.4529227893092891, 0.5255113673951125, -0.1211749565143398], 
+      Arrow3DBox[TubeBox[{{3.1203800006346025`, -2.25194029167539, 
+       5.095559203426818}, {4.8796199993653975`, -3.5215624002208665`, 
+       7.968386091416802}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3391595437566965, 0.5223273843887658, -0.4975430351257818], 
+      Arrow3DBox[TubeBox[{{6.657193076133948, -2.402207634095779, 
+       5.435575385239101}, {9.342806923866052, -3.371295057800477, 
+       7.628369909604519}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3293714447969187, 0.522344861909931, -0.5209360580062029], 
+      Arrow3DBox[TubeBox[{{-6.701595726078898, 3.3855220843952347`, 
+       5.471829997103283}, {-9.298404273921102, 4.697381684259525, 
+       7.592115297740337}}, 0.17999999999999997`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.42169921476806116`, 0.5234767845554691, -0.26027675961366675`], 
+      Arrow3DBox[TubeBox[{{-3.168615612366939, 3.20145188432738, 
+       5.174327627543638}, {-4.8313843876330616`, 4.8814518843273795`, 
+       7.889617667299982}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.054000000000000006`, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.49261377389559596`, 0.5280977015133033, 0.05564936945938154],
+       Arrow3DBox[TubeBox[{{0., 3.094377889043816, 5.001269917477936}, {0., 
+       4.988525879610943, 8.062675377365684}}, 0.18000000000000002`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05400000000000001, 1.}}, Appearance -> "Projected"], 
+     {LABColor[
+      0.42169921476806116`, 0.5234767845554691, -0.26027675961366675`], 
+      Arrow3DBox[TubeBox[{{3.168615612366939, 3.20145188432738, 
+       5.174327627543638}, {4.8313843876330616`, 4.8814518843273795`, 
+       7.889617667299982}}, 0.18000000000000005`]]}}, 
+    {CapForm["Butt"], 
+     Arrowheads[{{0.05399999999999999, 1.}}, Appearance -> "Projected"], 
+     {LABColor[0.3293714447969187, 0.522344861909931, -0.5209360580062029], 
+      Arrow3DBox[TubeBox[{{6.701595726078898, 3.3855220843952347`, 
+       5.471829997103283}, {9.298404273921102, 4.697381684259525, 
+       7.592115297740337}}, 0.17999999999999997`]]}}}},
+  Axes->True,
+  BoxRatios->{1, 1, 1},
+  DisplayFunction->Identity,
+  FaceGridsStyle->Automatic,
+  ImageSize->{397.40667285313174`, 379.27216449190104`},
+  ImageSizeRaw->Automatic,
+  Method->{
+   "VectorLengthFunction" -> 
+    Function[{System`VectorPlotsDump`m, System`VectorPlotsDump`vrange}, 
+      System`VectorPlotsDump`min = Min[System`VectorPlotsDump`vrange]; 
+      System`VectorPlotsDump`max = Max[System`VectorPlotsDump`vrange]; 
+      System`VectorPlotsDump`imin = If[
+         NumericQ[System`VectorPlotsDump`min], System`VectorPlotsDump`min, 
+         Min[System`VectorPlotsDump`m], 
+         Min[System`VectorPlotsDump`m]]; System`VectorPlotsDump`imax = If[
+         NumericQ[System`VectorPlotsDump`max], System`VectorPlotsDump`max, 
+         Max[System`VectorPlotsDump`m], 
+         Max[System`VectorPlotsDump`m]]; Map[If[
+         Or[# > System`VectorPlotsDump`imax, # < 
+          System`VectorPlotsDump`imin], #, System`VectorPlotsDump`imax]& , 
+        System`VectorPlotsDump`m]], "DefaultBoundaryStyle" -> Automatic, 
+    "DefaultColorFunction" -> 
+    ColorDataFunction[
+     "WL12DefaultVectorDensityGradient", "ThemeGradients", {0, 1}, Blend[
+      "WL12DefaultVectorDensityGradient", #]& ], 
+    "DefaultGraphicsInteraction" -> {
+     "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+      "Effects" -> {
+       "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+        "Droplines" -> {
+         "freeformCursorMode" -> True, 
+          "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+    "TransparentPolygonMesh" -> True},
+  PlotRange->{{-12., 12.}, {-10.623244953089113`, 
+   12.932646029847618`}, {-11.757550765359253`, 11.757550765359253`}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.02]}},
+  Ticks->{Automatic, Automatic, Automatic},
+  ViewPoint->{3.1196331198867115`, -1.1507502658031015`, 0.6274257111881782},
+  ViewVertical->{0.5144938305707811, 0.11972689070882611`, 
+   0.8490945588954162}]], "Output",
+ CellChangeTimes->{{3.8234840680620174`*^9, 3.8234840784783726`*^9}},
+ CellLabel->
+  "Out[236]=",ExpressionUUID->"45ff2980-6edd-4a39-9828-5fef6d13e1fc"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8234839202320642`*^9, 
+  3.8234839393619857`*^9}},ExpressionUUID->"22189caf-b05d-469e-b97d-\
+5f1c326ad1c3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CurlProc", "[", 
+   RowBox[{"v_", ",", 
+    RowBox[{"{", 
+     RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"i", ",", "j", ",", "k"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"i", "=", 
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"v", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+         ",", "y"}], "]"}], "-", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"v", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+         ",", "z"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Echo", "[", 
+      RowBox[{"i", ",", 
+       RowBox[{
+       "\"\<i=\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]y\)]\)[\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"v", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+         "]"}], "<>", "\"\<]\>\"", "<>", 
+        "\"\<-\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]z\)]\)[\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"v", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+         "]"}], "<>", "\"\<]=\>\""}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"j", "=", 
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"v", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+         ",", "z"}], "]"}], "-", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"v", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+         ",", "x"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Echo", "[", 
+      RowBox[{"j", ",", 
+       RowBox[{
+       "\"\<j=\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]z\)]\)[\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"v", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+         "]"}], "<>", "\"\<]-\>\"", "<>", 
+        "\"\<\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]x\)]\)[\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"v", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+         "]"}], "<>", "\"\<]=\>\""}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"z", "=", 
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"v", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+         ",", "x"}], "]"}], "-", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"v", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+         ",", "y"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Echo", "[", 
+      RowBox[{"k", ",", 
+       RowBox[{
+       "\"\<k=\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]x\)]\)[\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"v", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+         "]"}], "<>", "\"\<]-\>\"", "<>", 
+        "\"\<\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]y\)]\)[\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"v", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+         "]"}], "<>", "\"\<]=\>\""}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Echo", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"i", ",", "j", ",", "z"}], "}"}], ",", 
+       "\"\<\:65cb\:5ea6={i,j,k}=\>\""}], "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.8311570966492414`*^9, 3.831157126364903*^9}, {
+  3.8311572392988214`*^9, 3.831157276108039*^9}, {3.831157337052161*^9, 
+  3.831157469746108*^9}, {3.831157713524596*^9, 3.831157716855036*^9}, {
+  3.831157765750104*^9, 3.8311579250140038`*^9}, {3.831157965978762*^9, 
+  3.8311580355515833`*^9}, {3.831158305146113*^9, 3.831158347302861*^9}, {
+  3.831158651687128*^9, 3.831158842483276*^9}, {3.831158882560233*^9, 
+  3.8311589396877785`*^9}, {3.8311590029752445`*^9, 
+  3.8311590847168922`*^9}},ExpressionUUID->"179534c7-efbd-4fcd-9d6b-\
+2ce144f7f9aa"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CurlProc", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "y"}], ",", "x"}], "}"}], ",", "x", ",", "y"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.8311574437293105`*^9, 3.8311574522645416`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"60ad629a-2426-4cde-8987-0336cb22f576"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox["\<\"\\!\\(\\*FractionBox[\\(d\\), \\(dx\\)]\\)[x]=\"\>",
+   "EchoLabel"], "  ", "1"}]], "Echo",
+ CellChangeTimes->{
+  3.831157993165934*^9},ExpressionUUID->"9e89f533-d4e9-4de8-af74-\
+8207a287008e"],
+
+Cell[BoxData[
+ RowBox[{
+  TagBox["\<\"\\!\\(\\*FractionBox[\\(d\\), \\(dy\\)]\\)[-y]=\"\>",
+   "EchoLabel"], "  ", 
+  RowBox[{"-", "1"}]}]], "Echo",
+ CellChangeTimes->{
+  3.8311579931948566`*^9},ExpressionUUID->"ac1376ed-24f1-4fcc-98a5-\
+1006a70a736a"],
+
+Cell[BoxData[
+ RowBox[{
+  TagBox["\<\"\:65cb\:5ea6\:ff1a\"\>",
+   "EchoLabel"], "  ", "2"}]], "Echo",
+ CellChangeTimes->{
+  3.831157993227769*^9},ExpressionUUID->"efc98dda-6f02-49a0-9289-\
+c116f13a2989"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Curl", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "y"}], ",", "x"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8311575047997084`*^9, 3.83115752751962*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"92968d37-3434-4b47-b208-abace6256ef4"],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{3.831157528095106*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"52c46e07-5c3b-4492-858a-cca328f9d08d"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8311587161907635`*^9, 
+  3.8311587240035243`*^9}},ExpressionUUID->"9b43afd6-2142-4330-a0de-\
+cd59bf2ff029"]
+},
+WindowSize->{940, 762},
+WindowMargins->{{Automatic, -1}, {80, Automatic}},
+TaggingRules->{
+ "WelcomeScreenSettings" -> {"FEStarting" -> False}, "TryRealOnly" -> False},
+Magnification:>1.1 Inherited,
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (2021\:5e742\:67085\
+\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e9940f36-e48c-4489-b803-be8a331658b6"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 12262, 321, 2263, "Input",ExpressionUUID->"2d26e4c9-13ab-4f8c-9ecd-f4367ea13dc9"],
+Cell[12823, 343, 504, 10, 81, "Input",ExpressionUUID->"eb98b6a4-c53d-4cfd-a7cc-08fa10eafa8d"],
+Cell[CellGroupData[{
+Cell[13352, 357, 196, 4, 55, "Input",ExpressionUUID->"9abd5c47-ffa5-4abb-b41e-a79a9a992dec"],
+Cell[13551, 363, 20003, 446, 206, "Output",ExpressionUUID->"14934d44-acb2-4313-adfd-7cd429270058"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33591, 814, 1203, 38, 135, "Input",ExpressionUUID->"28c8a970-a5e5-4864-8262-2cfcb920467f"],
+Cell[34797, 854, 82787, 1415, 545, "Output",ExpressionUUID->"45ff2980-6edd-4a39-9828-5fef6d13e1fc"]
+}, Open  ]],
+Cell[117599, 2272, 156, 3, 40, "Input",ExpressionUUID->"22189caf-b05d-469e-b97d-5f1c326ad1c3"],
+Cell[117758, 2277, 3961, 88, 673, "Input",ExpressionUUID->"179534c7-efbd-4fcd-9d6b-2ce144f7f9aa"],
+Cell[CellGroupData[{
+Cell[121744, 2369, 316, 8, 40, "Input",ExpressionUUID->"60ad629a-2426-4cde-8987-0336cb22f576"],
+Cell[CellGroupData[{
+Cell[122085, 2381, 231, 6, 54, "Echo",ExpressionUUID->"9e89f533-d4e9-4de8-af74-8207a287008e"],
+Cell[122319, 2389, 252, 7, 57, "Echo",ExpressionUUID->"ac1376ed-24f1-4fcc-98a5-1006a70a736a"],
+Cell[122574, 2398, 203, 6, 36, "Echo",ExpressionUUID->"efc98dda-6f02-49a0-9289-c116f13a2989"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[122826, 2410, 345, 9, 61, "Input",ExpressionUUID->"92968d37-3434-4b47-b208-abace6256ef4"],
+Cell[123174, 2421, 149, 2, 46, "Output",ExpressionUUID->"52c46e07-5c3b-4492-858a-cca328f9d08d"]
+}, Open  ]],
+Cell[123338, 2426, 156, 3, 40, "Input",ExpressionUUID->"9b43afd6-2142-4330-a0de-cd59bf2ff029"]
+}
+]
+*)
+

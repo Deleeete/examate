@@ -20,6 +20,8 @@ PAgivenBBayes::usage="PAgivenBBayes[A\:4e8b\:4ef6\:6982\:7387,B\:4e8b\:4ef6\:698
 PPV::usage="PPV[\:53d1\:75c5\:7387,\:6d4b\:8bd5\:7075\:654f\:5ea6,\:6d4b\:8bd5\:5047\:9633\:6027\:7387] \n\:5df2\:77e5\:53d1\:75c5\:7387\:548c\:6d4b\:8bd5\:7684\:7075\:654f\:5ea6\:4e0e\:5047\:9633\:6027\:7387\:ff0c\:6c42\:9633\:6027\:7ed3\:679c\:5b9e\:9645\:60a3\:75c5\:6982\:7387\:ff08\:9633\:6027\:7ed3\:679c\:9884\:6d4b\:503c\:ff0cPositivePredictiveValue\:ff0cPPV\:ff09\:3002";
 NPV::usage="NPV[\:53d1\:75c5\:7387,\:6d4b\:8bd5\:7075\:654f\:5ea6,\:6d4b\:8bd5\:5047\:9633\:6027\:7387] \n\:5df2\:77e5\:53d1\:75c5\:7387\:548c\:6d4b\:8bd5\:7684\:7075\:654f\:5ea6\:4e0e\:5047\:9633\:6027\:7387\:ff0c\:6c42\:9634\:6027\:7ed3\:679c\:5b9e\:9645\:4e0d\:60a3\:75c5\:6982\:7387\:ff08\:9634\:6027\:7ed3\:679c\:9884\:6d4b\:503c\:ff0cNegativePredictiveValue\:ff0cNPV\:ff09\:3002";
 DivProcess::usage="DivProcess[\:5411\:91cf\:573a,{i\:65b9\:5411\:81ea\:53d8\:91cf,j\:65b9\:5411\:81ea\:53d8\:91cf,z\:65b9\:5411\:81ea\:53d8\:91cf}] \n\:5df2\:77e5\:5411\:91cf\:573a\:7684\:8868\:8fbe\:5f0f\:ff0c\:6c42\:5411\:91cf\:573a\:7684\:6563\:5ea6\:3002\:8fd9\:4e2a\:51fd\:6570\:4f1a\:663e\:793a\:8ba1\:7b97\:8fc7\:7a0b\:3002";
+CurlProcess::usage="CurlProcess[\:5411\:91cf\:573a,{i\:65b9\:5411\:81ea\:53d8\:91cf,j\:65b9\:5411\:81ea\:53d8\:91cf}] \n\:5df2\:77e5\:5411\:91cf\:573a\:7684\:8868\:8fbe\:5f0f\:ff0c\:6c42\:5411\:91cf\:573a\:7684\:65cb\:5ea6\:3002\:8fd9\:4e2a\:51fd\:6570\:4f1a\:663e\:793a\:8ba1\:7b97\:8fc7\:7a0b\:3002";
+CurlProcess3D::usage="CurlProcess3D[\:5411\:91cf\:573a,{i\:65b9\:5411\:81ea\:53d8\:91cf,j\:65b9\:5411\:81ea\:53d8\:91cf,z\:65b9\:5411\:81ea\:53d8\:91cf}] \n\:5df2\:77e5\:5411\:91cf\:573a\:7684\:8868\:8fbe\:5f0f\:ff0c\:6c42\:5411\:91cf\:573a\:7684\:65cb\:5ea6\:3002\:8fd9\:4e2a\:51fd\:6570\:4f1a\:663e\:793a\:8ba1\:7b97\:8fc7\:7a0b\:3002";
 Flux::usage="Flux[\:5411\:91cf\:573a,{i\:65b9\:5411\:81ea\:53d8\:91cf,j\:65b9\:5411\:81ea\:53d8\:91cf,z\:65b9\:5411\:81ea\:53d8\:91cf},\:66f2\:9762\:53c2\:6570\:65b9\:7a0b,{\:66f2\:9762\:53c2\:65701,\:66f2\:9762\:53c2\:65701\:4e0b\:9650,\:66f2\:9762\:53c2\:65701\:4e0a\:9650},{\:66f2\:9762\:53c2\:65702,\:66f2\:9762\:53c2\:65702\:4e0b\:9650,\:66f2\:9762\:53c2\:65702\:4e0a\:9650}] \n\:5df2\:77e5\:5411\:91cf\:573av\:7684\:8868\:8fbe\:5f0f\:ff0c\:548c\:66f2\:9762g\:7684\:53c2\:6570\:65b9\:7a0b\:4e0e\:53c2\:6570\:8303\:56f4\:ff0c\:6c42v\:7a7f\:8fc7s\:7684\:901a\:91cf\:3002";
 LineIntegrate::usage="LineIntegrate[\:5411\:91cf\:573a,{i\:65b9\:5411\:81ea\:53d8\:91cf,j\:65b9\:5411\:81ea\:53d8\:91cf,z\:65b9\:5411\:81ea\:53d8\:91cf},\:8def\:5f84\:53c2\:6570\:65b9\:7a0b,{\:66f2\:9762\:53c2\:65701,\:66f2\:9762\:53c2\:65701\:4e0b\:9650,\:66f2\:9762\:53c2\:65701\:4e0a\:9650}] \n\:5df2\:77e5\:5411\:91cf\:573av\:7684\:8868\:8fbe\:5f0f\:ff0c\:548c\:66f2\:7ebfc\:7684\:53c2\:6570\:65b9\:7a0b\:4e0e\:53c2\:6570\:8303\:56f4\:ff0c\:6c42v\:5728c\:4e0a\:7684\:7ebf\:79ef\:5206\:3002";
 ParticularSolve::usage="ParticularSolve[\:5404\:9636\:5bfc\:6570\:7684\:7cfb\:6570\:7684\:96c6\:5408,\:65b9\:7a0b\:53f3\:624b\:8fb9\:7684\:8868\:8fbe\:5f0f,\:731c\:89e3\:7684\:8868\:8fbe\:5f0f,\:731c\:89e3\:4e2d\:5f85\:5b9a\:5e38\:6570\:7684\:96c6\:5408,\:81ea\:53d8\:91cf] \n\:5df2\:77e5/\:731c\:6d4b\:89e3\:7684\:5f62\:5f0f\:ff0c\:89e3\:4efb\:610f\:9636\:5e38\:7cfb\:6570\:5fae\:5206\:65b9\:7a0b\:3002";
@@ -37,7 +39,7 @@ QP::usage="QP[\:6ce2\:51fd\:6570,\:65f6\:95f4,{\:4f4d\:7f6e\:81ea\:53d8\:91cf,\:
 SimplifyConjugate::usage="SimplifyConjugate[\:8868\:8fbe\:5f0f,\:8868\:8fbe\:5f0f\:4e2d\:662f\:5b9e\:6570\:7684\:7b26\:53f7\:7684\:96c6\:5408] \n\:5df2\:77e5\:4e00\:4e2a\:590d\:8868\:8fbe\:5f0f\:ff0c\:6c42\:5176\:5171\:8f6d\:7684\:8868\:8fbe\:5f0f\:3002\:7b2c\:4e8c\:4e2a\:53c2\:6570\:4e3a\:8be5\:8868\:8fbe\:5f0f\:4e2d\:5b9e\:6570\:53c2\:6570\:7684\:96c6\:5408\:3002";
 SimplifyNormSquare::usage="SimplifyNorm[\:51fd\:6570\:540d,\:8868\:8fbe\:5f0f\:4e2d\:662f\:5b9e\:6570\:7684\:7b26\:53f7\:7684\:96c6\:5408] \n\:5df2\:77e5\:4e00\:4e2a\:590d\:8868\:8fbe\:5f0f\:ff0c\:6c42\:5176\:6a21\:5e73\:65b9\:7684\:8868\:8fbe\:5f0f\:3002\:7b2c\:4e8c\:4e2a\:53c2\:6570\:4e3a\:8be5\:8868\:8fbe\:5f0f\:4e2d\:5b9e\:6570\:53c2\:6570\:7684\:96c6\:5408\:3002";
 ListD::usage="ListD[\:51fd\:6570\:540d,\:51fd\:6570\:8868\:8fbe\:5f0f\:7684,\:81ea\:53d8\:91cf1,\:81ea\:53d8\:91cf2] \n\:5206\:522b\:5217\:51fa\:51fd\:6570\:5bf9\:4e24\:4e2a\:81ea\:53d8\:91cf\:7684\:4e00\:9636\:548c\:4e8c\:9636\:504f\:5bfc\:6570\:ff0c\:5e76\:8fd4\:56de\:4e00\:4e2a\:5bfc\:6570\:8868\:8fbe\:5f0f\:66ff\:6362\:89c4\:5219\:3002";
-
+IntegrateProcess::usage="IntegrateProcess[\:51fd\:6570,{\:81ea\:53d8\:91cf,\:79ef\:5206\:4e0b\:9650,\:79ef\:5206\:4e0a\:9650}] \n\:8ba1\:7b97\:79ef\:5206\:3002\:8fd9\:4e2a\:51fd\:6570\:4f1a\:6253\:5370\:8ba1\:7b97\:8fc7\:7a0b\:3002";
 
 
 Begin["`Private`"];
@@ -114,19 +116,34 @@ DivProcess[f_,{x_,y_,z_}]:=Module[{dfx,dfy,dfz},
 	Echo["z\:5206\:91cf\:6c42\:5bfc\:7ed3\:679c\:4e3a\:ff1a"<>Str@dfz];
 	Echo["\:6563\:5ea6\:4e3a\:ff1a("<>Str@dfx<>")+("<>Str@dfy<>")+("<>Str@dfz<>")= "<>Str[dfx+dfy+dfz]];
 ];
-
+CurlProcess[f_,{x_,y_}]:=Module[{left,right},
+	left=D[f[[2]],x];
+	Echo[left,"\!\(\*FractionBox[\(d\), \(dx\)]\)["<>ToString[f[[2]]]<>"]="];
+	right=D[f[[1]],y];
+	Echo[right,"\!\(\*FractionBox[\(d\), \(dy\)]\)["<>ToString[f[[1]]]<>"]="];
+	Echo[left-right,"\:65cb\:5ea6\:ff1a"];
+];
+CurlProcess3D[v_,{x_,y_,z_}]:=Module[{i,j,k},
+	i=D[v[[3]],y]-D[v[[2]],z];
+	Echo[i,"i=\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]y\)]\)["<>ToString[v[[3]]]<>"]"<>"-\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]z\)]\)["<>ToString[v[[2]]]<>"]="];
+	j=D[v[[1]],z]-D[v[[3]],x];
+	Echo[j,"j=\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]z\)]\)["<>ToString[v[[1]]]<>"]-"<>"\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]x\)]\)["<>ToString[v[[3]]]<>"]="];
+	k=D[v[[2]],x]-D[v[[1]],y];
+	Echo[k,"k=\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]x\)]\)["<>ToString[v[[2]]]<>"]-"<>"\!\(\*FractionBox[\(\[PartialD]\), \(\[PartialD]y\)]\)["<>ToString[v[[1]]]<>"]="];
+	Echo[{i,j,k},"\:65cb\:5ea6={i,j,k}="]
+];
 Flux[v_,{x_,y_,z_},g_,{a_,amin_,amax_},{b_,bmin_,bmax_}]:=Module[{dga,dgb,dS,vp,i1,i2},
 	dga=Simplify@D[g,a];
-	dgb=Simplify@D[g,b];
-	dS=Simplify[dga\[Cross]dgb];
-	vp=Simplify[v/.{x->g[[1]],y->g[[2]],z->g[[3]]}];
-	i1=Simplify@Integrate[vp.dS,{a,amin,amax},Assumptions->{amax\[Element]Reals,amin\[Element]Reals}];
-	i2=Simplify@Integrate[i1,{b,bmin,bmax},Assumptions->{bmax\[Element]Reals,bmin\[Element]Reals}];
 	Echo["\:53c2\:65701\:7684\:504f\:5bfc\:6570\:4e3a\:ff1a"<>Str@dga];
+	dgb=Simplify@D[g,b];
 	Echo["\:53c2\:65702\:7684\:504f\:5bfc\:6570\:4e3a\:ff1a"<>Str@dgb];
+	dS=Simplify[dga\[Cross]dgb];
 	Echo["\:9762\:79ef\:5fae\:5143\:7684\:8868\:8fbe\:5f0f\:4e3a\:ff1a"<>Str@dS];
+	vp=Simplify[v/.{x->g[[1]],y->g[[2]],z->g[[3]]}];
 	Echo["\:53c2\:6570\:5316\:540e\:7684\:5411\:91cf\:573a\:8868\:8fbe\:5f0f\:4e3a\:ff1a"<>Str@vp];
+	i1=Simplify@Integrate[vp . dS,{a,amin,amax},Assumptions->{amax\[Element]Reals,amin\[Element]Reals}];
 	Echo["\:5bf9\:7b2c\:4e00\:5c42\:79ef\:5206\:ff08\:53c2\:65701\:ff09\:7ed3\:679c\:4e3a\:ff1a"<>Str@i1];
+	i2=Simplify@Integrate[i1,{b,bmin,bmax},Assumptions->{bmax\[Element]Reals,bmin\[Element]Reals}];
 	Echo["\:5bf9\:7b2c\:4e8c\:5c42\:79ef\:5206\:ff08\:53c2\:65702\:ff09\:7ed3\:679c\:4e3a\:ff1a"<>Str@i2];
 	i2
 ];
@@ -134,7 +151,7 @@ Flux[v_,{x_,y_,z_},g_,{a_,amin_,amax_},{b_,bmin_,bmax_}]:=Module[{dga,dgb,dS,vp,
 LineIntegrate[v_,{x_,y_,z_},c_,{a_,amax_,amin_}]:=Module[{dca,vp,dot,i},
 	dca=Simplify@D[c,a];
 	vp=Simplify@v/.{x->c[[1]],y->c[[2]],z->c[[3]]};
-	dot=Simplify[vp.dca];
+	dot=Simplify[vp . dca];
 	i=Simplify@Integrate[dot,{a,amax,amin},Assumptions->{amax\[Element]Reals,amin\[Element]Reals}];
 	Echo["\:8def\:5f84\:7684\:5207\:5411\:91cf\:4e3a\:ff1a"<>Str@dca];
 	Echo["\:53c2\:6570\:5316\:540e\:7684\:5411\:91cf\:573a\:4e3a\:ff1a"<>Str@vp];
@@ -146,7 +163,7 @@ LineIntegrate[v_,{x_,y_,z_},c_,{a_,amax_,amin_}]:=Module[{dca,vp,dot,i},
 ParticularSolve[coe_,rhs_,guess_,const_,t_]:=Module[{dguess,dguess2,lhs,equa,equb,equc,rnd,s},
 	dguess=Table[Simplify@D[guess,{t,Length@coe-1-i}],{i,0,Length@coe-1}];
 	Echo["\:731c\:89e3\:7684\:5404\:9636\:5bfc\:6570\:ff08\:964d\:5e8f\:ff09\:4e3a\:ff1a"<>Str@dguess];
-	lhs=Simplify[coe.dguess];
+	lhs=Simplify[coe . dguess];
 	Echo["\:4ee3\:5165\:540e\:65b9\:7a0b\:5de6\:624b\:8fb9\:4e3a\:ff1a"<>Str@lhs];
 	rnd=RandomInteger[]-RandomInteger[];
 	equa=(lhs/.{t->rnd})==(rhs/.{t->rnd});
@@ -162,7 +179,7 @@ OrthogonalInterval[fx_,gx_,x_]:=Solve[Integrate[fx*gx,x]==0,x];
 
 BaseFunctionCoefficients[fx_,basis_,{x_,xmin_,xmax_}]:=Module[{coe,s},
 	coe=Table[Integrate[fx*basis[[i]],{x,xmin,xmax}],{i,1,basis//Length}];
-	s=Simplify[basis.coe/fx];
+	s=Simplify[basis . coe/fx];
 	coe/s
 ];
 
@@ -215,6 +232,19 @@ dts=List[Rule[\!\(
 \*SubscriptBox[\(\[PartialD]\), \(t, t\)]fname\),dt2]];
 List[dxs,dts]
 ]
+
+IntegrateProcess[f_,{x_,xmin_,xmax_}]:=Module[{ttf,simpf,integ,simpi,imin,imax},
+ttf=ToString@TraditionalForm@#&;
+simpf=Simplify[f];
+integ=Integrate[f,x];
+simpi=Simplify@integ;
+imin=integ/.{x->xmin};
+imax=integ/.{x->xmax};
+Echo["\:79ef\:5206\:5f97\:ff1a"<>ToString[HoldForm@\[Integral]f \[DifferentialD]x,TraditionalForm]<>"="<>ttf@integ<>"="<>ttf@simpi];
+Echo["\:4ee3\:5165\:4e0a\:4e0b\:9650\:5f97\:ff1a"<>Str@imax<>"-"<>Str@imin<>"="<>Str[imax-imin]];
+]
+
+OperatorP[f_,p_]:=Module[]
 
 
 End[];
