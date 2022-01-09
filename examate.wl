@@ -40,6 +40,18 @@ SimplifyConjugate::usage="SimplifyConjugate[\:8868\:8fbe\:5f0f,\:8868\:8fbe\:5f0
 SimplifyNormSquare::usage="SimplifyNorm[\:51fd\:6570\:540d,\:8868\:8fbe\:5f0f\:4e2d\:662f\:5b9e\:6570\:7684\:7b26\:53f7\:7684\:96c6\:5408] \n\:5df2\:77e5\:4e00\:4e2a\:590d\:8868\:8fbe\:5f0f\:ff0c\:6c42\:5176\:6a21\:5e73\:65b9\:7684\:8868\:8fbe\:5f0f\:3002\:7b2c\:4e8c\:4e2a\:53c2\:6570\:4e3a\:8be5\:8868\:8fbe\:5f0f\:4e2d\:5b9e\:6570\:53c2\:6570\:7684\:96c6\:5408\:3002";
 ListD::usage="ListD[\:51fd\:6570\:540d,\:51fd\:6570\:8868\:8fbe\:5f0f\:7684,\:81ea\:53d8\:91cf1,\:81ea\:53d8\:91cf2] \n\:5206\:522b\:5217\:51fa\:51fd\:6570\:5bf9\:4e24\:4e2a\:81ea\:53d8\:91cf\:7684\:4e00\:9636\:548c\:4e8c\:9636\:504f\:5bfc\:6570\:ff0c\:5e76\:8fd4\:56de\:4e00\:4e2a\:5bfc\:6570\:8868\:8fbe\:5f0f\:66ff\:6362\:89c4\:5219\:3002";
 IntegrateProcess::usage="IntegrateProcess[\:51fd\:6570,{\:81ea\:53d8\:91cf,\:79ef\:5206\:4e0b\:9650,\:79ef\:5206\:4e0a\:9650}] \n\:8ba1\:7b97\:79ef\:5206\:3002\:8fd9\:4e2a\:51fd\:6570\:4f1a\:6253\:5370\:8ba1\:7b97\:8fc7\:7a0b\:3002";
+LipidLc::usage="LipidLc[\:78b3\:539f\:5b50\:6570\:91cf] \n\:5df2\:77e5\:78b3\:539f\:5b50\:6570\:91cf\:ff0c\:8ba1\:7b97\:78f7\:8102\:5c3e\:90e8\:78b3\:94fe\:957f\:5ea6\:3002\:5355\:4f4d\:4e3a\:7eb3\:7c73\:3002";
+LipidV::usage="LipidV[\:78b3\:539f\:5b50\:6570\:91cf] \n\:5df2\:77e5\:78b3\:539f\:5b50\:6570\:91cf\:ff0c\:8ba1\:7b97\:78f7\:8102\:5c3e\:90e8\:78b3\:94fe\:4f53\:79ef\:ff08\:5047\:8bbe\:4e3a0\:578b\:78f7\:8102\:ff09\:3002\:5355\:4f4d\:4e3a\:7acb\:65b9\:7eb3\:7c73\:3002";
+LipidPackingParameters::usage="LipidPackingParameters[\:5c3e\:90e8\:4f53\:79efV,\:5934\:7ec4\:622a\:9762\:79efa0,\:5c3e\:90e8\:957f\:5ea6lc] \n\:8ba1\:7b97\:78f7\:8102\:7684\:5806\:79ef\:53c2\:6570\:3002";
+LipidDeltaGibbs::usage="LipidDeltaGibbs[\[Gamma],a,a0] \n\:8ba1\:7b97\:78f7\:8102\:7684\:5806\:79ef\:53c2\:6570\:3002";
+LipidPhase::usage="LipidPhase[b1,b2,b3] \n\:5df2\:77e5\:884d\:5c04\:73af\:5750\:6807\:ff0c\:81ea\:52a8\:5224\:65ad\:6700\:53ef\:80fd\:7684\:78f7\:8102\:76f8\:6001\:3002";
+FRETk::usage="FRETk[\[Tau] \:8870\:51cf\:65f6\:95f4,R0 Forste\:8ddd\:79bb,r D-A\:8ddd\:79bb] \n\:8ba1\:7b97FRET\:7684\:80fd\:91cf\:8f6c\:5316\:53d1\:751f\:7387\:3002";
+FRETe::usage="FRETe[R0 Forste\:8ddd\:79bb,r D-A\:8ddd\:79bb] \n\:8ba1\:7b97FRET\:7684\:80fd\:91cf\:8f6c\:5316\:6548\:7387\:3002";
+FRETe::usage="FRETe[Fd D\:53d1\:5c04\:901a\:91cf,Fda A\:53d1\:5c04\:901a\:91cf] \n\:8ba1\:7b97FRET\:7684\:80fd\:91cf\:8f6c\:5316\:6548\:7387\:3002";
+StateLifetime::usage="StateLifetime[kIC \:5185\:8f6c\:6362\:53d1\:751f\:7387,kFl \:8367\:5149\:53d1\:751f\:7387,kISC \:5176\:4ed6\:53d1\:751f\:7387] \n\:5df2\:77e5\:5404\:79cd\:91ca\:653e\:8fc7\:7a0b\:7684\:53d1\:751f\:7387\:ff0c\:6c42\:7535\:5b50\:6fc0\:53d1\:6001\:5bff\:547d";
+DNAVolumeFraction::usage="DNAVolumeFraction[Nbp \:78b1\:57fa\:5bf9\:6570\:91cf,V \:5bb9\:5668\:603b\:4f53\:79ef] \n\:5df2\:77e5\:78b1\:57fa\:5bf9\:6570\:91cf\:548c\:5bb9\:5668\:603b\:4f53\:79ef\:ff0c\:8ba1\:7b97DNA\:4f53\:79ef\:5360\:6bd4\:3002";
+ProteinkDa::usage="ProteinkDa[Naa \:6c28\:57fa\:9178\:6570\:91cf] \n\:5df2\:77e5\:6c28\:57fa\:9178\:6570\:91cf\:ff0c\:8ba1\:7b97\:86cb\:767d\:8d28\:5206\:5b50\:91cf\:3002";
+QuantumEfficiency::usage="QuantumEfficiency[kIC \:5185\:8f6c\:6362\:53d1\:751f\:7387,kFl \:8367\:5149\:53d1\:751f\:7387,kISC \:5176\:4ed6\:53d1\:751f\:7387] \n\:5df2\:77e5\:5404\:79cd\:91ca\:653e\:8fc7\:7a0b\:7684\:53d1\:751f\:7387\:ff0c\:6c42\:8367\:5149\:91cf\:5b50\:6548\:7387";
 
 
 Begin["`Private`"];
@@ -244,7 +256,46 @@ Echo["\:79ef\:5206\:5f97\:ff1a"<>ToString[HoldForm@\[Integral]f \[DifferentialD]
 Echo["\:4ee3\:5165\:4e0a\:4e0b\:9650\:5f97\:ff1a"<>Str@imax<>"-"<>Str@imin<>"="<>Str[imax-imin]];
 ]
 
-OperatorP[f_,p_]:=Module[]
+LipidLc[n_]:=0.154+0.1265(n-1);
+
+LipidV[n_]:=27.4+26.9(n-1)10^-3;
+
+LipidPackingParameters[V_,a0_,lc_]:=V/(a0 lc);
+
+LipidDeltaGibbs[\[Gamma]_,a_,a0_]:=2\[Gamma] a0 + \[Gamma]/a0 (a-a0)^2;
+
+LipidPhase[b1_,b2_,b3_]:=Module[{a1,a2,a3,pairs,len,ps,stddv},
+pairs=
+{{"Ia3d",{\[Sqrt]6,\[Sqrt]8,\[Sqrt]14}},
+{"Pn3m",{\[Sqrt]2,\[Sqrt]3,\[Sqrt]4}},
+{"Im3m",{\[Sqrt]2,\[Sqrt]4,\[Sqrt]6}},
+{"Lamellar",{1,2,3}},
+{"Hexagonal",{1,\[Sqrt]3,2}},
+{"Fd3m",{\[Sqrt]3,\[Sqrt]8,\[Sqrt]11}}};
+len = pairs//Length;
+a1=(2\[Pi])/b1;
+a2=(2\[Pi])/b2;
+a3=(2\[Pi])/b3;
+Echo[{a1,a2,a3},"Grid coordinate"];
+ps=Table[{pairs[[i]][[2]][[1]]a1,pairs[[i]][[2]][[2]]a2,pairs[[i]][[2]][[3]]a3},{i,len}];
+Table[Echo[ps[[i]],pairs[[i]][[1]]],{i,len}];
+stddv=Table[StandardDeviation@{pairs[[i]][[2]][[1]]a1,pairs[[i]][[2]][[2]]a2,pairs[[i]][[2]][[3]]a3},{i,pairs//Length}];
+Echo[pairs[[Ordering[stddv,1]]][[1]][[1]],"Most-likely phase"];
+];
+
+FRETk[\[Tau]_,R0_,r_]:=1/\[Tau] (R0/r)^6;
+
+FRETe[R0_,r_]:=R0^6/(R0^6+r^6);
+
+FRETe[Fd_,Fda_]:=1-Fda/Fd;
+
+StateLifetime[kIC_,kFl_,kISC_]:=1/(kIC+kFl+kISC);
+
+DNAVolumeFraction[Nbp_,V_]:=Nbp/V;
+
+ProteinkDa[Naa_]:=110 Naa;
+
+QuantumEfficiency[kIC_,kFl_,kISC_]:=kFl/(kFl+kIC+kISC);
 
 
 End[];
